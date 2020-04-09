@@ -9,11 +9,7 @@
         待機中のためのNuxt学習用プロジェクト
       </h2>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
+        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
           Documentation
         </a>
         <a
@@ -24,6 +20,9 @@
           GitHub
         </a>
       </div>
+      <p class="links-text">
+        text
+      </p>
     </div>
   </div>
 </template>
@@ -33,12 +32,12 @@ import Logo from '~/components/Logo.vue'
 
 export default {
   components: {
-    Logo
-  }
+    Logo,
+  },
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 .container {
   margin: 0 auto;
   min-height: 100vh;
@@ -68,5 +67,8 @@ export default {
 
 .links {
   padding-top: 15px;
+  &-text {
+    color: red;
+  }
 }
 </style>
