@@ -23,7 +23,7 @@
       <p class="links-text">
         text
       </p>
-      <p>heroku-github-connect-test</p>
+      <p>heroku-github-connect-re-test</p>
     </div>
   </div>
 </template>
