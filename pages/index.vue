@@ -1,40 +1,36 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        waiting_nuxt
-      </h1>
-      <h2 class="subtitle">
-        待機中のためのNuxt学習用プロジェクト
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-      <p class="links-text">
-        text
+    <!-- <ul> -->
+    <!-- <li v-for="(post, index) in posts.items" :key="index"> -->
+    <!-- <a href="#" target="_blank" rel="noopener noreferrer"> -->
+    <!-- <h1>{{ post.volumeInfo.title }}</h1> -->
+    <!-- <img :src="post.volumeInfo.imageLinks.thumbnail" alt="" /> -->
+    <!-- </a> -->
+    <!-- </li> -->
+    <!-- </ul> -->
+    <header>
+      <!-- ここにヘッダー -->
+      <p class="text">
+        うらうらと晩春の日が照りわたっている野山
       </p>
-      <p>heroku-github-connect-re-test</p>
-    </div>
+      <p class="text">
+        まるかめゴシック丸Pickup
+      </p>
+    </header>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo,
-  },
+  components: {},
+  // async asyncData({ $axios }) {
+  //   const url =
+  //     'https://www.googleapis.com/books/v1/volumes?q=%E3%81%8A%E3%81%8A%E3%81%8D%E3%81%8F%E6%8C%AF%E3%82%8A%E3%81%8B%E3%81%B6%E3%81%A3%E3%81%A6'
+  //   const response = await $axios.$get(url)
+  //   return {
+  //     posts: response,
+  //   }
+  // },
 }
 </script>
 
@@ -48,12 +44,13 @@ export default {
   text-align: center;
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+.text {
+  font-family: 'marukame', 'honokamaru', Roboto, 'Quicksand', 'Source Sans Pro',
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial,
+    sans-serif;
   display: block;
   font-weight: 300;
-  font-size: 100px;
+  font-size: 32px;
   color: #35495e;
   letter-spacing: 1px;
 }
