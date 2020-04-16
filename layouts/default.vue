@@ -6,9 +6,10 @@
 
 <style>
 html {
-  font-family: 'marukame', 'honokamaru', Roboto, 'Quicksand', 'Source Sans Pro',
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial,
-    sans-serif;
+  font-family: 'marukame', 'honokamaru', Roboto, '游ゴシック体', YuGothic,
+    '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック',
+    'Yu Gothic' -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue',
+    Arial, sans-serif;
   font-size: 62.5%;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
