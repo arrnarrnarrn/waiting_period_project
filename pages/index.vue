@@ -8,21 +8,24 @@
     <!-- </a> -->
     <!-- </li> -->
     <!-- </ul> -->
-    <header>
-      <!-- ここにヘッダー -->
-      <p class="text">
-        うらうらと晩春の日が照りわたっている野山
-      </p>
-      <p class="text">
-        まるかめゴシック丸Pickup
-      </p>
-    </header>
+    <the-header />
+    <p class="text">
+      うらうらと晩春の日が照りわたっている野山
+    </p>
+    <p class="text">
+      まるかめゴシック丸Pickup
+    </p>
+    <the-sns />
+    <the-footer />
   </div>
 </template>
 
 <script>
+import TheHeader from '@/components/pc/organism/TheHeader.vue'
+import TheSns from '@/components/pc/molecules/TheSns.vue'
+import TheFooter from '@/components/pc/organism/TheFooter.vue'
 export default {
-  components: {},
+  components: { TheHeader, TheSns, TheFooter },
   // async asyncData({ $axios }) {
   //   const url =
   //     'https://www.googleapis.com/books/v1/volumes?q=%E3%81%8A%E3%81%8A%E3%81%8D%E3%81%8F%E6%8C%AF%E3%82%8A%E3%81%8B%E3%81%B6%E3%81%A3%E3%81%A6'
@@ -37,11 +40,6 @@ export default {
 <style scoped lang="scss">
 .container {
   margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 
 .text {

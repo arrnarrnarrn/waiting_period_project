@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.9.7",
+    "@nuxtjs/style-resources": "^1.0.0",
     "eslint-plugin-jest": "^23.8.2",
     "nuxt": "^2.0.0"
   },
