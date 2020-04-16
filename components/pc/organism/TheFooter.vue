@@ -22,12 +22,14 @@ export default {}
 <style lang="scss" scoped>
 .footer {
   background-color: $main-color;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   &_wrap {
+    width: 1040px;
+    margin: 0 auto;
     padding: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   &_copy {
     font-size: 1.8rem;

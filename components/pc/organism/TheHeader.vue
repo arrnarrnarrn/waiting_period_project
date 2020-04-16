@@ -15,14 +15,14 @@ export default {}
 <style lang="scss" scoped>
 .header {
   width: 100%;
-  text-align: center;
   background: $main-color;
   line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   &_wrap {
-    padding: 12px;
+    width: 1040px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: center;
   }
   &_link {
     display: inline-block;
