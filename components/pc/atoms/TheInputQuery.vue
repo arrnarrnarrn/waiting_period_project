@@ -4,12 +4,12 @@
       v-model="inputText"
       class="input_area"
       type="text"
-      name="input"
+      :name="label"
       autocomplete="off"
     />
     <label
       class="input_label"
-      for="input"
+      :for="label"
       :class="{ input_label_active: isInputText }"
     >
       {{ label }}
@@ -68,12 +68,14 @@ export default {
     font-size: 1.6rem;
     font-weight: bold;
     position: absolute;
+    pointer-events: none;
     top: 12px;
     line-height: 1;
     text-transform: capitalize;
     transition: all 0.2s;
     &_active {
       top: -16px;
+      font-size: 1.4rem;
     }
   }
   &_area {
@@ -91,6 +93,7 @@ export default {
     padding: 4px;
     &:focus + .input_label {
       top: -16px;
+      font-size: 1.4rem;
     }
   }
 }

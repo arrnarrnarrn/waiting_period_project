@@ -1,6 +1,11 @@
 <template>
   <div class="select_wrap">
-    <select class="select_box" name="select" @change="updatedSelectItem">
+    <select
+      v-model="selectedValue"
+      class="select_box"
+      :name="label"
+      @change="updatedSelectItem"
+    >
       <option value="" />
       <option v-for="(item, index) in itemList" :key="index" :value="item">
         {{ item }}
@@ -8,7 +13,7 @@
     </select>
     <label
       class="select_label"
-      for="select"
+      :for="label"
       :class="{ select_label_active: isSelected }"
     >
       {{ label }}
@@ -27,20 +32,36 @@ export default {
       type: String,
       default: '',
     },
+    itemSelected: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
       isSelected: false,
     }
   },
+  computed: {
+    selectedValue: {
+      get: function () {
+        this.judgeLength()
+        return this.itemSelected
+      },
+      set: function (selectItem) {},
+    },
+  },
   methods: {
     updatedSelectItem(e) {
-      if (e.target.value.length === 0) {
+      this.judgeLength()
+      this.$emit('changeSelectedItem', e.target.value)
+    },
+    judgeLength() {
+      if (this.itemSelected.length === 0) {
         this.isSelected = false
       } else {
         this.isSelected = true
       }
-      this.$emit('changeSelectedItem', e.target.value)
     },
   },
 }
@@ -68,12 +89,14 @@ export default {
     font-size: 1.6rem;
     font-weight: bold;
     position: absolute;
+    pointer-events: none;
     top: 4px;
     line-height: 1;
     transition: all 0.2s;
     text-transform: capitalize;
     &_active {
       top: -16px;
+      font-size: 1.4rem;
     }
   }
   &_box {
@@ -92,6 +115,7 @@ export default {
     padding: 4px 0;
     &:focus + .select_label {
       top: -16px;
+      font-size: 1.4rem;
     }
   }
 }

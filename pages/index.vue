@@ -21,12 +21,14 @@
       :query="title_query"
       @changeQuery="changeInputText"
     />
+    {{ queryString }}
     <the-multi-input-query
       label="category"
       :item-list="['nobita', 'doraemon', 'jaion']"
       @changeSelectedItem="changeSelectedItem"
     />
-    <p>{{ category_selected }}</p>
+    <!-- <p>{{ category_selected }}</p> -->
+    <the-advanced-search @submittedQuery="submittedQuery" />
     <the-sns />
     <the-footer />
   </div>
@@ -36,6 +38,7 @@
 import TheHeader from '@/components/pc/organism/TheHeader.vue'
 import TheInputQuery from '@/components/pc/atoms/TheInputQuery.vue'
 import TheMultiInputQuery from '@/components/pc/atoms/TheMultiInputQuery.vue'
+import TheAdvancedSearch from '@/components/pc/molecules/TheAdvancedSearch.vue'
 import TheSns from '@/components/pc/molecules/TheSns.vue'
 import TheFooter from '@/components/pc/organism/TheFooter.vue'
 export default {
@@ -44,6 +47,7 @@ export default {
     TheHeader,
     TheInputQuery,
     TheMultiInputQuery,
+    TheAdvancedSearch,
     TheSns,
     TheFooter,
   },
@@ -59,7 +63,13 @@ export default {
     return {
       title_query: '',
       category_selected: '',
+      queryString: '',
     }
+  },
+  computed: {
+    result() {
+      return `title:${this.title_query}`
+    },
   },
   methods: {
     changeInputText(query) {
@@ -67,6 +77,9 @@ export default {
     },
     changeSelectedItem(item) {
       this.category_selected = item
+    },
+    submittedQuery(value) {
+      this.queryString = value
     },
   },
 }
