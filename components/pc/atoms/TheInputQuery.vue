@@ -1,18 +1,18 @@
 <template>
   <div class="input_wrap">
     <input
-      v-model="input_text"
+      v-model="inputText"
       class="input_area"
       type="text"
       name="input"
       autocomplete="off"
     />
     <label
-      class="input_attribute"
+      class="input_label"
       for="input"
-      :class="{ input_attribute_active: isInputText }"
+      :class="{ input_label_active: isInputText }"
     >
-      {{ attribute }}
+      {{ label }}
     </label>
   </div>
 </template>
@@ -24,13 +24,13 @@ export default {
       type: String,
       default: '',
     },
-    attribute: {
+    label: {
       type: String,
       default: '',
     },
   },
   computed: {
-    input_text: {
+    inputText: {
       get: function () {
         return this.query
       },
@@ -62,32 +62,34 @@ export default {
       background: $main-color;
     }
   }
-  &_attribute {
+  &_label {
     display: block;
     color: $main-color;
     font-size: 1.6rem;
     font-weight: bold;
     position: absolute;
-    top: 2px;
+    top: 12px;
     line-height: 1;
+    text-transform: capitalize;
     transition: all 0.2s;
     &_active {
       top: -16px;
     }
   }
   &_area {
-    font-family: 'marukame', 'honokamaru', Roboto, '游ゴシック体', YuGothic,
-      '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック',
-      'Yu Gothic' -apple-system, BlinkMacSystemFont, 'Segoe UI',
-      'Helvetica Neue', Arial, sans-serif;
+    font-family: '游ゴシック体', YuGothic, '游ゴシック Medium',
+      'Yu Gothic Medium', '游ゴシック', 'Yu Gothic', 'roboto', 'marukame',
+      'honokamaru', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      'Helvetica Neue', Arial, sans-serif, 'Meiryo';
+    //font-family: inherit;
     color: $main-color;
     display: block;
     border: 0;
     width: 100%;
     outline: none;
     font-size: 1.8rem;
-    padding: 4px 2px;
-    &:focus + .input_attribute {
+    padding: 4px;
+    &:focus + .input_label {
       top: -16px;
     }
   }
