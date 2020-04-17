@@ -17,10 +17,16 @@
     </p>
     <!-- {{ title_query }} -->
     <the-input-query
-      attribute="title"
+      label="title"
       :query="title_query"
       @changeQuery="changeInputText"
     />
+    <the-multi-input-query
+      label="category"
+      :item-list="['nobita', 'doraemon', 'jaion']"
+      @changeSelectedItem="changeSelectedItem"
+    />
+    <p>{{ category_selected }}</p>
     <the-sns />
     <the-footer />
   </div>
@@ -29,11 +35,18 @@
 <script>
 import TheHeader from '@/components/pc/organism/TheHeader.vue'
 import TheInputQuery from '@/components/pc/atoms/TheInputQuery.vue'
+import TheMultiInputQuery from '@/components/pc/atoms/TheMultiInputQuery.vue'
 import TheSns from '@/components/pc/molecules/TheSns.vue'
 import TheFooter from '@/components/pc/organism/TheFooter.vue'
 export default {
   //components: { TheHeader, TheSns, TheFooter },
-  components: { TheHeader, TheInputQuery, TheSns, TheFooter },
+  components: {
+    TheHeader,
+    TheInputQuery,
+    TheMultiInputQuery,
+    TheSns,
+    TheFooter,
+  },
   // async asyncData({ $axios }) {
   //   const url =
   //     'https://www.googleapis.com/books/v1/volumes?q=%E3%81%8A%E3%81%8A%E3%81%8D%E3%81%8F%E6%8C%AF%E3%82%8A%E3%81%8B%E3%81%B6%E3%81%A3%E3%81%A6'
@@ -45,11 +58,15 @@ export default {
   data() {
     return {
       title_query: '',
+      category_selected: '',
     }
   },
   methods: {
     changeInputText(query) {
       this.title_query = query
+    },
+    changeSelectedItem(item) {
+      this.category_selected = item
     },
   },
 }
