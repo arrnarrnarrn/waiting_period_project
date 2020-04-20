@@ -1,6 +1,11 @@
 $main-color: #0c8a36;
 $back-white: #fefefe;
+$pale-green: #f5fff3;
 
 .u-inline-block {
   display: inline-block;
+}
+
+.pale-green {
+  background: $pale-green;
 }

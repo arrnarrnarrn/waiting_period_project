@@ -41,8 +41,14 @@
           />
         </li>
       </ul>
-      <button type="button" @click="querySubmit">aaaa</button>
-      <button type="button" @click="clearQuery">aaaa</button>
+      <div>
+        <the-basic-button btn-text="Search" @clickEvent="querySubmit" />
+        <the-basic-button
+          btn-text="Clear"
+          variation="white"
+          @clickEvent="clearQuery"
+        />
+      </div>
     </div>
   </section>
 </template>
@@ -50,10 +56,12 @@
 <script>
 import TheInputQuery from '@/components/pc/atoms/TheInputQuery.vue'
 import TheMultiInputQuery from '@/components/pc/atoms/TheMultiInputQuery.vue'
+import TheBasicButton from '@/components/pc/atoms/TheBasicButton.vue'
 export default {
   components: {
     TheInputQuery,
     TheMultiInputQuery,
+    TheBasicButton,
   },
   props: {
     queryString: {
