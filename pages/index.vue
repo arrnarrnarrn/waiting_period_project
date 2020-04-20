@@ -1,14 +1,13 @@
 <template>
   <div class="container">
-    <!-- <ul> -->
-    <!-- <li v-for="(post, index) in posts.items" :key="index"> -->
-    <!-- <a href="#" target="_blank" rel="noopener noreferrer"> -->
-    <!-- <h1>{{ post.volumeInfo.title }}</h1> -->
-    <!-- <img :src="post.volumeInfo.imageLinks.thumbnail" alt="" /> -->
-    <!-- </a> -->
-    <!-- </li> -->
-    <!-- </ul> -->
     <the-header />
+    <section class="section pale-green">
+      <div class="section_wrap">
+        <h1 class="section-title">PickUp</h1>
+        <the-book-list :book-list="pickup" />
+      </div>
+    </section>
+
     <p class="text">
       うらうらと晩春の日が照りわたっている野山
     </p>
@@ -16,17 +15,8 @@
       まるかめゴシック丸Pickup
     </p>
     <!-- {{ title_query }} -->
-    <the-input-query
-      label="title"
-      :query="title_query"
-      @changeQuery="changeInputText"
-    />
-    <the-multi-input-query
-      label="category"
-      :item-list="['nobita', 'doraemon', 'jaion']"
-      @changeSelectedItem="changeSelectedItem"
-    />
-    <p>{{ category_selected }}</p>
+    <!-- <p>{{ category_selected }}</p> -->
+    <the-advanced-search @submittedQuery="submittedQuery" />
     <the-sns />
     <the-footer />
   </div>
@@ -34,16 +24,16 @@
 
 <script>
 import TheHeader from '@/components/pc/organism/TheHeader.vue'
-import TheInputQuery from '@/components/pc/atoms/TheInputQuery.vue'
-import TheMultiInputQuery from '@/components/pc/atoms/TheMultiInputQuery.vue'
+import TheBookList from '@/components/pc/organism/TheBookList.vue'
+import TheAdvancedSearch from '@/components/pc/molecules/TheAdvancedSearch.vue'
 import TheSns from '@/components/pc/molecules/TheSns.vue'
 import TheFooter from '@/components/pc/organism/TheFooter.vue'
 export default {
   //components: { TheHeader, TheSns, TheFooter },
   components: {
     TheHeader,
-    TheInputQuery,
-    TheMultiInputQuery,
+    TheBookList,
+    TheAdvancedSearch,
     TheSns,
     TheFooter,
   },
@@ -55,11 +45,24 @@ export default {
   //     posts: response,
   //   }
   // },
+  async asyncData({ $axios }) {
+    const url = '/api/pickup'
+    const response = await $axios.$get(url)
+    return {
+      pickup: response,
+    }
+  },
   data() {
     return {
       title_query: '',
       category_selected: '',
+      queryString: '',
     }
+  },
+  computed: {
+    result() {
+      return `title:${this.title_query}`
+    },
   },
   methods: {
     changeInputText(query) {
@@ -67,6 +70,9 @@ export default {
     },
     changeSelectedItem(item) {
       this.category_selected = item
+    },
+    submittedQuery(value) {
+      this.queryString = value
     },
   },
 }

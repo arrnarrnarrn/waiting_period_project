@@ -3,6 +3,10 @@ export default {
   /*
    ** Headers of the page
    */
+  serverMiddleware: [
+    { path: '/api/', handler: '~/api/index.js' },
+    { path: '/api/pickup/', handler: '~/api/pickup.js' },
+  ],
   head: {
     title: process.env.npm_package_name || '',
     htmlAttrs: {
