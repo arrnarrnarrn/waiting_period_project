@@ -1,9 +1,13 @@
 <template>
-  <div>{{ book }}</div>
+  <the-advanced-book-detail :id="id" :book="book" />
 </template>
 
 <script>
+import TheAdvancedBookDetail from '@/components/pc/organism/TheAdvancedBookDetail.vue'
 export default {
+  components: {
+    TheAdvancedBookDetail,
+  },
   asyncData({ params }) {
     return { id: params.id, book: params.bookDetail }
   },

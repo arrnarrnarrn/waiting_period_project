@@ -1,7 +1,7 @@
 <template>
   <section class="advancedSearch">
     <div class="advancedSearch_wrap">
-      <h1 class="section-title">Advanced Search</h1>
+      <h1 class="section-title u-mb-0">Advanced Search</h1>
       <ul class="advancedSearch_list">
         <li class="advancedSearch_item">
           <the-input-query

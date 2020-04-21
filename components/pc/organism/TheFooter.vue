@@ -32,6 +32,7 @@ export default {}
     align-items: center;
   }
   &_copy {
+    font-family: 'marukame', 'honokamaru', 'roboto';
     font-size: 1.8rem;
     color: white;
   }
