@@ -31,6 +31,7 @@ export default {}
   &_logo {
     display: flex;
     align-items: center;
+    font-family: 'marukame', 'honokamaru', 'roboto';
     font-size: 2.4rem;
     color: white;
     &::before {

@@ -1,14 +1,30 @@
 <template>
   <div>
+    <the-header />
     <nuxt />
+    <the-sns />
+    <the-footer />
   </div>
 </template>
+<script>
+import TheHeader from '@/components/pc/organism/TheHeader.vue'
+import TheSns from '@/components/pc/molecules/TheSns.vue'
+import TheFooter from '@/components/pc/organism/TheFooter.vue'
+
+export default {
+  components: {
+    TheHeader,
+    TheSns,
+    TheFooter,
+  },
+}
+</script>
 
 <style>
 html {
-  font-family: 'marukame', 'honokamaru', 'roboto', '游ゴシック体', YuGothic,
-    '游ゴシック', 'Yu Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Helvetica Neue', Arial, sans-serif;
+  font-family: 'roboto', '游ゴシック体', YuGothic, '游ゴシック', 'Yu Gothic',
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial,
+    sans-serif;
   font-size: 62.5%;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
