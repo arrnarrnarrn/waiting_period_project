@@ -10,7 +10,12 @@ export default {
   },
   async asyncData({ $axios }) {
     const url = '/api/pickup'
-    const response = await $axios.$get(url)
+    const response = await $axios.$get(url).catch((error) => {
+      return this.$nuxt.error({
+        statusCode: error.response.status,
+        message: error.response.message,
+      })
+    })
     return {
       pickup: response,
     }

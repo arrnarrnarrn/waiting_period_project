@@ -83,125 +83,105 @@ export default {
   data() {
     return {
       altSrc: altImg,
-      bookData: this.book,
     }
   },
   computed: {
     thumbnail() {
-      if (!this.bookData) return false
-      if (!this.bookData.volumeInfo.imageLinks.thumbnail) {
+      if (!this.book) return false
+      if (!this.book.volumeInfo.imageLinks) {
         return this.altSrc
       }
-      return this.bookData.volumeInfo.imageLinks.thumbnail
+      return this.book.volumeInfo.imageLinks.thumbnail
     },
     title() {
-      if (!this.bookData) return false
-      if (!this.bookData.volumeInfo.title) {
+      if (!this.book) return false
+      if (!this.book.volumeInfo.title) {
         return ''
       }
-      return this.bookData.volumeInfo.title
+      return this.book.volumeInfo.title
     },
     subTitle() {
-      if (!this.bookData) return false
-      if (!this.bookData.volumeInfo.subtitle) {
+      if (!this.book) return false
+      if (!this.book.volumeInfo.subtitle) {
         return ''
       }
-      return this.bookData.volumeInfo.subtitle
+      return this.book.volumeInfo.subtitle
     },
     authors() {
-      if (!this.bookData) return false
-      if (!this.bookData.volumeInfo.authors) {
+      if (!this.book) return false
+      if (!this.book.volumeInfo.authors) {
         return false
       }
-      return this.bookData.volumeInfo.authors
+      return this.book.volumeInfo.authors
     },
     publisher() {
-      if (!this.bookData) return false
-      if (!this.bookData.volumeInfo.publisher) {
+      if (!this.book) return false
+      if (!this.book.volumeInfo.publisher) {
         return ''
       }
-      return this.bookData.volumeInfo.publisher
+      return this.book.volumeInfo.publisher
     },
     publishedDate() {
-      if (!this.bookData) return false
-      if (!this.bookData.volumeInfo.publishedDate) {
+      if (!this.book) return false
+      if (!this.book.volumeInfo.publishedDate) {
         return ''
       }
-      return this.bookData.volumeInfo.publishedDate
+      return this.book.volumeInfo.publishedDate
     },
     mainCategory() {
-      if (!this.bookData) return false
-      if (!this.bookData.volumeInfo.mainCategory) {
+      if (!this.book) return false
+      if (!this.book.volumeInfo.mainCategory) {
         return ''
       }
-      return this.bookData.volumeInfo.mainCategory
+      return this.book.volumeInfo.mainCategory
     },
     categories() {
-      if (!this.bookData) return false
-      if (!this.bookData.volumeInfo.categories) {
+      if (!this.book) return false
+      if (!this.book.volumeInfo.categories) {
         return false
       }
-      return this.bookData.volumeInfo.categories
+      return this.book.volumeInfo.categories
     },
     pageCount() {
-      if (!this.bookData) return false
-      if (!this.bookData.volumeInfo.pageCount) {
+      if (!this.book) return false
+      if (!this.book.volumeInfo.pageCount) {
         return ''
       }
-      return this.bookData.volumeInfo.pageCount
+      return this.book.volumeInfo.pageCount
     },
     isbn10() {
-      if (!this.bookData) return false
-      if (!this.bookData.volumeInfo.industryIdentifiers) {
+      if (!this.book) return false
+      if (!this.book.volumeInfo.industryIdentifiers) {
         return false
       }
-      const isbn10 = this.bookData.volumeInfo.industryIdentifiers.find(
-        (obj) => {
-          return obj.type === 'ISBN_10'
-        }
-      )
+      const isbn10 = this.book.volumeInfo.industryIdentifiers.find((obj) => {
+        return obj.type === 'ISBN_10'
+      })
       return isbn10
     },
     isbn13() {
-      if (!this.bookData) return false
-      if (!this.bookData.volumeInfo.industryIdentifiers) {
+      if (!this.book) return false
+      if (!this.book.volumeInfo.industryIdentifiers) {
         return false
       }
-      const isbn13 = this.bookData.volumeInfo.industryIdentifiers.find(
-        (obj) => {
-          return obj.type === 'ISBN_13'
-        }
-      )
+      const isbn13 = this.book.volumeInfo.industryIdentifiers.find((obj) => {
+        return obj.type === 'ISBN_13'
+      })
       return isbn13
     },
     country() {
-      if (!this.bookData) return false
-      if (!this.bookData.saleInfo.country) {
+      if (!this.book) return false
+      if (!this.book.saleInfo.country) {
         return ''
       }
-      return this.bookData.saleInfo.country
+      return this.book.saleInfo.country
     },
     description() {
-      if (!this.bookData) return false
-      if (!this.bookData.volumeInfo.description) {
+      if (!this.book) return false
+      if (!this.book.volumeInfo.description) {
         return ''
       }
-      return this.bookData.volumeInfo.description
-    },
-  },
-  created() {
-    if (!this.bookData) {
-      this.getBook()
-    }
-  },
-  methods: {
-    async getBook() {
-      const url = `https://www.googleapis.com/books/v1/volumes?q=?id=${this.id}`
-      const response = await this.$axios.$get(url)
-      if (!response.items) {
-        return false
-      }
-      this.bookData = response.items[0]
+      return this.book.volumeInfo.description
     },
   },
 }

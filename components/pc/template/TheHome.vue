@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <section class="section pale-green">
-      <div class="section_wrap">
+      <div v-if="isPickup" class="section_wrap">
         <h1 class="section-title">PickUp</h1>
         <the-book-list :book-list="pickup" />
       </div>
@@ -52,6 +52,13 @@ export default {
   computed: {
     result() {
       return `title:${this.title_query}`
+    },
+    isPickup() {
+      if (Object.keys(this.pickup).length) {
+        return true
+      } else {
+        return false
+      }
     },
   },
   methods: {

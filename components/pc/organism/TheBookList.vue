@@ -1,10 +1,6 @@
 <template>
   <ul class="bookList">
-    <li
-      v-for="(item, index) in bookList.items"
-      :key="index"
-      class="bookList_item"
-    >
+    <li v-for="(item, index) in bookLists" :key="index" class="bookList_item">
       <nuxt-link
         :to="{
           name: 'detail-id',
@@ -13,12 +9,7 @@
         class="bookList_link"
         rel="noopener noreferrer"
       >
-        <img
-          class="bookList_img"
-          :src="item.volumeInfo.imageLinks.thumbnail"
-          alt=""
-          :error="altSrc"
-        />
+        <img class="bookList_img" :src="thumbnail(item)" alt="" />
       </nuxt-link>
     </li>
   </ul>
@@ -36,7 +27,37 @@ export default {
   data() {
     return {
       altSrc: altImg,
+      bookData: this.bookList,
     }
+  },
+  computed: {
+    bookLists() {
+      this.setBookData()
+      if (!this.bookData) return false
+      if (this.bookData.items) {
+        let sliceMax = 0
+        if (this.bookData.items.length > 5) {
+          sliceMax = 5
+        } else {
+          sliceMax = this.bookData.items.length
+        }
+        return this.bookData.items.slice(0, sliceMax)
+      }
+      return this.bookData.items
+    },
+    thumbnail() {
+      return function (item) {
+        if (!item.volumeInfo.imageLinks) {
+          return this.altSrc
+        }
+        return item.volumeInfo.imageLinks.thumbnail
+      }
+    },
+  },
+  methods: {
+    setBookData() {
+      this.bookData = this.bookList
+    },
   },
 }
 </script>

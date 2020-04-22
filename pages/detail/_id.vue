@@ -1,17 +1,77 @@
 <template>
-  <the-advanced-book-detail :id="id" :book="book" />
+  <div>
+    <the-detail :id="id" :book="bookData" :pickup="pickup" :related="related" />
+  </div>
 </template>
 
 <script>
-import TheAdvancedBookDetail from '@/components/pc/organism/TheAdvancedBookDetail.vue'
+import TheDetail from '@/components/pc/template/TheDetail.vue'
 export default {
   components: {
-    TheAdvancedBookDetail,
+    TheDetail,
   },
   asyncData({ params }) {
     return { id: params.id, book: params.bookDetail }
   },
+  data() {
+    return {
+      pickup: {},
+      related: {},
+      title: '',
+    }
+  },
+  computed: {
+    bookData() {
+      return this.book
+    },
+  },
+  created() {
+    if (!this.book) {
+      this.getBook()
+    } else {
+      this.title = this.book.volumeInfo.title
+      this.getRelated()
+    }
+    this.getPickup()
+  },
+  methods: {
+    async getBook() {
+      const url = `https://www.googleapis.com/books/v1/volumes?q=?id=${this.id}`
+      const response = await this.$axios.$get(url).catch((error) => {
+        return this.$nuxt.error({
+          statusCode: error.response.status,
+          message: error.response.message,
+        })
+      })
+      if (!response.items) {
+        return false
+      }
+      this.book = Object.assign({}, response.items[0])
+      this.title = this.book.volumeInfo.title
+      this.getRelated()
+    },
+    async getPickup() {
+      const url = '/api/pickup'
+      const response = await this.$axios.$get(url)
+      if (!response) {
+        this.pickup = {}
+      } else {
+        this.pickup = Object.assign({}, response)
+      }
+    },
+    async getRelated() {
+      if (this.title.length != 0) {
+        const url = `https://www.googleapis.com/books/v1/volumes?q=${this.title}&maxResults=5`
+        const response = await this.$axios.$get(url)
+        if (!response) {
+          this.related = {}
+        }
+        this.related = Object.assign({}, response)
+      } else {
+        this.related = {}
+      }
+    },
+  },
 }
 </script>
-
 <style lang="scss" scoped></style>
