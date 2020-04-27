@@ -41,9 +41,14 @@
           />
         </li>
       </ul>
-      <div>
-        <the-basic-button btn-text="Search" @clickEvent="querySubmit" />
+      <div class="advancedSearch_btns">
         <the-basic-button
+          class="advancedSearch_btn"
+          btn-text="Search"
+          @clickEvent="querySubmit"
+        />
+        <the-basic-button
+          class="advancedSearch_btn"
           btn-text="Clear"
           variation="white"
           @clickEvent="clearQuery"
@@ -76,35 +81,45 @@ export default {
       isbn_query: '',
       category_selected: '',
       country_selected: '',
-      categoryList: ['nobita', 'doraemon', 'jaion'],
+      categoryList: [
+        'Novels',
+        'Programming',
+        'Mistery',
+        'Cooking',
+        'Computer science',
+      ],
       countryList: ['JP', 'USA', 'EU'],
     }
   },
   computed: {
     titleQueryString() {
-      if (this.title_query.length != 0) return `title:${this.title_query}`
+      if (this.title_query.length != 0) return `title:${this.title_query}+`
       else return ''
     },
     authorQueryString() {
-      if (this.author_query.length != 0) return `+author:${this.author_query}`
+      if (this.author_query.length != 0) return `authors:${this.author_query}+`
       else return ''
     },
     isbnQueryString() {
-      if (this.isbn_query.length != 0) return `+isbn:${this.isbn_query}`
+      if (this.isbn_query.length != 0) return `isbn:${this.isbn_query}+`
       else return ''
     },
     categorySelectedString() {
       if (this.category_selected.length != 0)
-        return `+category:${this.category_selected}`
+        return `category:${this.category_selected}+`
       else return ''
     },
     countrySelectedString() {
       if (this.country_selected.length != 0)
-        return `+country:${this.country_selected}`
+        return `country:${this.country_selected}+`
       else return ''
     },
     queryConnect() {
-      return `${this.titleQueryString}${this.authorQueryString}${this.isbnQueryString}${this.categorySelectedString}${this.countrySelectedString}`
+      let queryString = `${this.titleQueryString}${this.authorQueryString}${this.isbnQueryString}${this.categorySelectedString}${this.countrySelectedString}`
+      if (queryString.length != 0) {
+        queryString = queryString.slice(0, -1)
+      }
+      return queryString
     },
   },
   methods: {
@@ -139,9 +154,9 @@ export default {
 
 <style lang="scss" scoped>
 .advancedSearch {
-  width: 1040px;
+  width: 100%;
+  max-width: 992px;
   margin: 0 auto;
-  padding: 0 24px;
   &_wrap {
     padding: 24px 32px;
     border: 2px solid $main-color;
@@ -157,6 +172,17 @@ export default {
     margin-right: 40px;
     margin-top: 8px;
     &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+  &_btns {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 24px;
+  }
+  &_btn {
+    margin-right: 16px;
+    &:last-child {
       margin-right: 0;
     }
   }

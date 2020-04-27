@@ -1,5 +1,10 @@
 <template>
-  <button class="basicBtn" :class="{ white: isWhite }" @click="clickEvent">
+  <button
+    type="button"
+    class="basicBtn"
+    :class="{ white: isWhite }"
+    @click="clickEvent"
+  >
     <p class="basicBtn_text">{{ btnText }}</p>
   </button>
 </template>
@@ -34,9 +39,9 @@ export default {
 .basicBtn {
   border: 1px solid $main-color;
   border-radius: 4px;
-  min-width: 56px;
-  padding: 0 4px;
-  height: 28px;
+  min-width: 64px;
+  padding: 0 8px;
+  height: 32px;
   background-color: $main-color;
   line-height: 1;
   display: flex;
@@ -46,7 +51,7 @@ export default {
   outline: none;
   cursor: pointer;
   &_text {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: bold;
     font-family: 'marukame', 'honokamaru', Roboto, '游ゴシック体', YuGothic,
       '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック', 'Yu Gothic',

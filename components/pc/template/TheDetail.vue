@@ -1,5 +1,6 @@
 <template>
   <div>
+    <the-search-form />
     <the-advanced-book-detail :id="id" :book="bookData" />
     <section v-if="isRelated" class="section pale-green">
       <div class="section_wrap">
@@ -7,8 +8,8 @@
         <the-book-list :book-list="related" />
       </div>
     </section>
-    <section class="section pale-green">
-      <div v-if="isPickup" class="section_wrap">
+    <section v-if="isPickup" class="section pale-green">
+      <div class="section_wrap">
         <h1 class="section-title">PickUp</h1>
         <the-book-list :book-list="pickup" />
       </div>
@@ -17,12 +18,14 @@
 </template>
 
 <script>
+import TheSearchForm from '@/components/pc/organism/TheSearchForm.vue'
 import TheAdvancedBookDetail from '@/components/pc/organism/TheAdvancedBookDetail.vue'
 import TheBookList from '@/components/pc/organism/TheBookList.vue'
 export default {
   components: {
     TheAdvancedBookDetail,
     TheBookList,
+    TheSearchForm,
   },
   props: {
     pickup: {
@@ -42,6 +45,11 @@ export default {
       default: () => {},
     },
   },
+  data() {
+    return {
+      queryString: '',
+    }
+  },
   computed: {
     bookData() {
       return this.book
@@ -59,6 +67,11 @@ export default {
       } else {
         return false
       }
+    },
+  },
+  methods: {
+    submittedQuery(query) {
+      console.log(query)
     },
   },
 }

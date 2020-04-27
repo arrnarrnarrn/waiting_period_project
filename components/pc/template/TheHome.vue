@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <section class="section pale-green">
-      <div v-if="isPickup" class="section_wrap">
+    <section v-if="isPickup" class="section pale-green">
+      <div class="section_wrap">
         <h1 class="section-title">PickUp</h1>
         <the-book-list :book-list="pickup" />
       </div>
     </section>
-
+    <the-search-form />
     <p class="text">
       うらうらと晩春の日が照りわたっている野山
     </p>
@@ -15,61 +15,30 @@
     </p>
     <!-- {{ title_query }} -->
     <!-- <p>{{ category_selected }}</p> -->
-    <the-advanced-search @submittedQuery="submittedQuery" />
   </div>
 </template>
 
 <script>
 import TheBookList from '@/components/pc/organism/TheBookList.vue'
-import TheAdvancedSearch from '@/components/pc/molecules/TheAdvancedSearch.vue'
+import TheSearchForm from '@/components/pc/organism/TheSearchForm.vue'
 export default {
-  //components: { TheHeader, TheSns, TheFooter },
   components: {
     TheBookList,
-    TheAdvancedSearch,
+    TheSearchForm,
   },
-  // async asyncData({ $axios }) {
-  //   const url =
-  //     'https://www.googleapis.com/books/v1/volumes?q=%E3%81%8A%E3%81%8A%E3%81%8D%E3%81%8F%E6%8C%AF%E3%82%8A%E3%81%8B%E3%81%B6%E3%81%A3%E3%81%A6'
-  //   const response = await $axios.$get(url)
-  //   return {
-  //     posts: response,
-  //   }
-  // },
   props: {
     pickup: {
       type: Object,
       default: () => {},
     },
   },
-  data() {
-    return {
-      title_query: '',
-      category_selected: '',
-      queryString: '',
-    }
-  },
   computed: {
-    result() {
-      return `title:${this.title_query}`
-    },
     isPickup() {
       if (Object.keys(this.pickup).length) {
         return true
       } else {
         return false
       }
-    },
-  },
-  methods: {
-    changeInputText(query) {
-      this.title_query = query
-    },
-    changeSelectedItem(item) {
-      this.category_selected = item
-    },
-    submittedQuery(value) {
-      this.queryString = value
     },
   },
 }
