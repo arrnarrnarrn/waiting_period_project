@@ -1,9 +1,9 @@
 <template>
   <section class="bookDetail">
-    <ul class="bookDetail_wrap">
+    <div class="bookDetail_wrap">
       <div class="bookDetail_basic">
         <img class="bookDetail_img" :src="thumbnail" alt="" />
-        <ul class="bookDetail_basic-info">
+        <div class="bookDetail_basic-info">
           <h1 v-if="title" class="bookDetail_basic-info_title">
             {{ title }}
           </h1>
@@ -57,19 +57,26 @@
           <p v-if="country" class="bookDetail_basic-info_language">
             言語：{{ country }}
           </p>
-        </ul>
+        </div>
       </div>
       <h2 v-if="description" class="bookDetail_description">概要</h2>
       <p v-if="description" class="bookDetail_description-text">
         {{ description }}
       </p>
-    </ul>
+      <div class="bookDetail_buyLink">
+        <the-basic-button-link :link="buyLink" link-text="購入" />
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
 import altImg from '~/assets/images/image_not_found.jpg'
+import TheBasicButtonLink from '@/components/pc/atoms/TheBasicButtonLink.vue'
 export default {
+  components: {
+    TheBasicButtonLink,
+  },
   props: {
     book: {
       type: Object,
@@ -171,10 +178,10 @@ export default {
     },
     country() {
       if (!this.book) return false
-      if (!this.book.saleInfo.country) {
+      if (!this.book.volumeInfo.language) {
         return ''
       }
-      return this.book.saleInfo.country
+      return this.book.volumeInfo.language
     },
     description() {
       if (!this.book) return false
@@ -182,6 +189,13 @@ export default {
         return ''
       }
       return this.book.volumeInfo.description
+    },
+    buyLink() {
+      if (!this.book) return false
+      if (!this.book.volumeInfo || !this.book.volumeInfo.infoLink) {
+        return ''
+      }
+      return this.book.volumeInfo.infoLink
     },
   },
 }
@@ -287,6 +301,10 @@ export default {
       text-align: justify;
       text-justify: inter-ideograph;
     }
+  }
+  &_buyLink {
+    display: flex;
+    justify-content: flex-end;
   }
 }
 </style>
