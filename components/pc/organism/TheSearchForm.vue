@@ -23,6 +23,7 @@ export default {
   methods: {
     submittedQuery(value) {
       this.queryString = value
+      this.submitToSearch()
     },
     submitToSearch() {
       const searchURL = `/search?q=${this.queryString}`

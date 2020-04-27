@@ -1,6 +1,6 @@
 <template>
   <div>
-    <the-advanced-search @submittedQuery="submittedQuery" />
+    <the-search-form />
     <the-advanced-book-detail :id="id" :book="bookData" />
     <section v-if="isRelated" class="section pale-green">
       <div class="section_wrap">
@@ -18,14 +18,14 @@
 </template>
 
 <script>
-import TheAdvancedSearch from '@/components/pc/molecules/TheAdvancedSearch.vue'
+import TheSearchForm from '@/components/pc/organism/TheSearchForm.vue'
 import TheAdvancedBookDetail from '@/components/pc/organism/TheAdvancedBookDetail.vue'
 import TheBookList from '@/components/pc/organism/TheBookList.vue'
 export default {
   components: {
     TheAdvancedBookDetail,
     TheBookList,
-    TheAdvancedSearch,
+    TheSearchForm,
   },
   props: {
     pickup: {

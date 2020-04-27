@@ -1,9 +1,10 @@
 <template>
   <div>
     <the-search-form />
-    <!-- {{ totalBook }} -->
-    <!-- {{ book }} -->
-    <the-simple-book-list :book-list="results" />
+    <div class="section_wrap">
+      <h1 class="section-title">Result ({{ totalBooks }})</h1>
+      <the-simple-book-list :total-books="totalBooks" :book-list="results" />
+    </div>
     <section v-if="isPickup" class="section pale-green">
       <div class="section_wrap">
         <h1 class="section-title">PickUp</h1>
@@ -28,6 +29,10 @@ export default {
       type: Object,
       default: () => {},
     },
+    totalBooks: {
+      type: Number,
+      default: 0,
+    },
     results: {
       type: Object,
       default: () => {},
@@ -42,26 +47,6 @@ export default {
       }
     },
   },
-  // created() {
-  // this.getResults()
-  // },
-  // methods: {
-  // async getResults() {
-  // const url = `https://www.googleapis.com/books/v1/volumes?q=+${this.query}`
-  // console.log(url)
-  // const response = await this.$axios.$get(url).catch((error) => {
-  // return this.$nuxt.error({
-  // statusCode: error.response.status,
-  // message: error.response.message,
-  // })
-  // })
-  // if (!response || !response.items) {
-  // return false
-  // }
-  // this.totalBook = response.totalItems
-  // this.book = Object.assign({}, response.items)
-  // },
-  // },
 }
 </script>
 

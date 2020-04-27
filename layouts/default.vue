@@ -36,6 +36,7 @@ html {
 
 body {
   font-size: 1.6rem;
+  min-width: 1040px;
 }
 
 *,

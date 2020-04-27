@@ -1,5 +1,10 @@
 <template>
-  <button class="basicBtn" :class="{ white: isWhite }" @click="clickEvent">
+  <button
+    type="button"
+    class="basicBtn"
+    :class="{ white: isWhite }"
+    @click="clickEvent"
+  >
     <p class="basicBtn_text">{{ btnText }}</p>
   </button>
 </template>

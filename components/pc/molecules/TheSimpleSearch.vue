@@ -6,7 +6,7 @@
       type="text"
       placeholder="input keywords, title, author..."
     />
-    <button class="simpleSearch_btn" @click="querySubmit" />
+    <button type="button" class="simpleSearch_btn" @click="querySubmit" />
   </div>
 </template>
 

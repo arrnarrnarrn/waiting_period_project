@@ -81,7 +81,13 @@ export default {
       isbn_query: '',
       category_selected: '',
       country_selected: '',
-      categoryList: ['nobita', 'doraemon', 'jaion'],
+      categoryList: [
+        'Novels',
+        'Programming',
+        'Mistery',
+        'Cooking',
+        'Computer science',
+      ],
       countryList: ['JP', 'USA', 'EU'],
     }
   },
@@ -110,7 +116,7 @@ export default {
     },
     queryConnect() {
       let queryString = `${this.titleQueryString}${this.authorQueryString}${this.isbnQueryString}${this.categorySelectedString}${this.countrySelectedString}`
-      if (this.queryString.length != 0) {
+      if (queryString.length != 0) {
         queryString = queryString.slice(0, -1)
       }
       return queryString

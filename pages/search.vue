@@ -1,7 +1,10 @@
 <template>
   <div>
-    {{ query }}
-    <the-search :pickup="pickup" :results="results" />
+    <the-search
+      :pickup="pickup"
+      :total-books="total_books"
+      :results="results"
+    />
   </div>
 </template>
 
@@ -27,7 +30,7 @@ export default {
     return {
       results: {},
       query: this.$route.query.q,
-      total_book: 0,
+      total_books: 0,
     }
   },
   created() {
@@ -36,10 +39,11 @@ export default {
   methods: {
     async getResults() {
       if (!this.query) {
+        this.results = {}
+        this.total_books = 0
         return false
       }
       const url = `https://www.googleapis.com/books/v1/volumes?q=${this.query}`
-      console.log(url)
       const response = await this.$axios.$get(url).catch((error) => {
         return this.$nuxt.error({
           statusCode: error.response.status,
@@ -47,9 +51,10 @@ export default {
         })
       })
       if (!response || !response.items) {
+        this.total_books = 0
         return false
       }
-      this.totalBook = response.totalItems
+      this.total_books = response.totalItems
       this.results = Object.assign({}, response.items)
     },
   },
