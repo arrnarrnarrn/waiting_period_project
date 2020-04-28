@@ -226,6 +226,7 @@ export default {
         font-size: 2.4rem;
         margin-bottom: 8px;
         &-sub {
+          font-size: 1.8rem;
           margin-bottom: 8px;
         }
       }

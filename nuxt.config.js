@@ -32,11 +32,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: [{ src: '~assets/css/style.scss' }],
+  css: ['~assets/css/style.scss', 'swiper/css/swiper.css'],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~plugins/vue-awesome-swiper'],
   /*
    ** Nuxt.js dev-modules
    */

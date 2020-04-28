@@ -13,6 +13,7 @@
     <p class="text">
       まるかめゴシック丸Pickup
     </p>
+    <the-basic-slider />
     <!-- {{ title_query }} -->
     <!-- <p>{{ category_selected }}</p> -->
   </div>
@@ -21,8 +22,10 @@
 <script>
 import TheBookList from '@/components/pc/organism/TheBookList.vue'
 import TheSearchForm from '@/components/pc/organism/TheSearchForm.vue'
+import TheBasicSlider from '@/components/pc/molecules/TheBasicSlider.vue'
 export default {
   components: {
+    TheBasicSlider,
     TheBookList,
     TheSearchForm,
   },
