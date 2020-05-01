@@ -10,8 +10,15 @@ export default {
   components: {
     TheDetail,
   },
-  asyncData({ params }) {
-    return { id: params.id, book: params.bookDetail }
+  async asyncData({ params, $axios }) {
+    const url = '/api/pickup'
+    const response = await $axios.$get(url).catch((error) => {
+      return this.$nuxt.error({
+        statusCode: error.response.status,
+        message: error.response.message,
+      })
+    })
+    return { id: params.id, book: params.bookDetail, pickup: response }
   },
   data() {
     return {
@@ -32,7 +39,6 @@ export default {
       this.title = this.book.volumeInfo.title
       this.getRelated()
     }
-    this.getPickup()
   },
   methods: {
     async getBook() {
@@ -49,15 +55,6 @@ export default {
       this.book = Object.assign({}, response.items[0])
       this.title = this.book.volumeInfo.title
       this.getRelated()
-    },
-    async getPickup() {
-      const url = '/api/pickup'
-      const response = await this.$axios.$get(url)
-      if (!response) {
-        this.pickup = {}
-      } else {
-        this.pickup = Object.assign({}, response)
-      }
     },
     async getRelated() {
       if (this.title.length != 0) {

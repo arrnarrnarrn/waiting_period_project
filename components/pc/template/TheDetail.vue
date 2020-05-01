@@ -69,11 +69,6 @@ export default {
       }
     },
   },
-  methods: {
-    submittedQuery(query) {
-      console.log(query)
-    },
-  },
 }
 </script>
 
