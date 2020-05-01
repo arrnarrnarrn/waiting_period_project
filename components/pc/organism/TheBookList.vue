@@ -32,7 +32,6 @@ export default {
   },
   computed: {
     bookLists() {
-      this.setBookData()
       if (!this.bookData) return false
       if (this.bookData.items) {
         let sliceMax = 0
@@ -52,11 +51,6 @@ export default {
         }
         return item.volumeInfo.imageLinks.thumbnail
       }
-    },
-  },
-  methods: {
-    setBookData() {
-      this.bookData = this.bookList
     },
   },
 }

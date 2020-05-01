@@ -63,7 +63,7 @@
       <p v-if="description" class="bookDetail_description-text">
         {{ description }}
       </p>
-      <div class="bookDetail_buyLink">
+      <div v-if="buyLink" class="bookDetail_buyLink">
         <the-basic-button-link :link="buyLink" link-text="購入" />
       </div>
     </div>
@@ -191,7 +191,7 @@ export default {
       return this.book.volumeInfo.description
     },
     buyLink() {
-      if (!this.book) return false
+      if (!this.book) return ''
       if (!this.book.volumeInfo || !this.book.volumeInfo.infoLink) {
         return ''
       }
