@@ -18,8 +18,8 @@ export default {
     const url = '/api/pickup'
     const response = await $axios.$get(url).catch((error) => {
       return this.$nuxt.error({
-        statusCode: error.response.status,
-        message: error.response.message,
+        // statusCode: error.response.status,
+        // message: error.response.message,
       })
     })
     return {
@@ -46,8 +46,8 @@ export default {
       const url = `https://www.googleapis.com/books/v1/volumes?q=${this.query}`
       const response = await this.$axios.$get(url).catch((error) => {
         return this.$nuxt.error({
-          statusCode: error.response.status,
-          message: error.response.message,
+          // statusCode: error.response.status,
+          // message: error.response.message,
         })
       })
       if (!response || !response.items) {
