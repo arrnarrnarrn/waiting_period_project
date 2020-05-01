@@ -8,6 +8,9 @@ export default {
   serverMiddleware: [
     { path: '/api/', handler: '~/api/index.js' },
     { path: '/api/pickup/', handler: '~/api/pickup.js' },
+    { path: '/api/pickup/comic', handler: '~/api/comicPickup.js' },
+    { path: '/api/pickup/programming', handler: '~/api/programmingPickup.js' },
+    { path: '/api/pickup/design', handler: '~/api/designPickup.js' },
   ],
   head: {
     title: process.env.npm_package_name || '',
@@ -32,11 +35,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: [{ src: '~assets/css/style.scss' }],
+  css: ['~assets/css/style.scss', 'swiper/css/swiper.css'],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~plugins/vue-awesome-swiper'],
   /*
    ** Nuxt.js dev-modules
    */
