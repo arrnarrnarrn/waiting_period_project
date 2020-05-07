@@ -16,11 +16,12 @@ export default {
   },
   async asyncData({ $axios }) {
     const url = '/api/pickup'
-    const response = await $axios.$get(url).catch((error) => {
-      return this.$nuxt.error({
-        // statusCode: error.response.status,
-        // message: error.response.message,
-      })
+    let response = await $axios.$get(url).catch((error) => {
+      //return this.$nuxt.error({
+      //  statusCode: error.response.status,
+      //  message: error.response.message,
+      //})
+      response = {}
     })
     return {
       pickup: response,
@@ -44,11 +45,12 @@ export default {
         return false
       }
       const url = `https://www.googleapis.com/books/v1/volumes?q=${this.query}`
-      const response = await this.$axios.$get(url).catch((error) => {
-        return this.$nuxt.error({
-          // statusCode: error.response.status,
-          // message: error.response.message,
-        })
+      let response = await this.$axios.$get(url).catch((error) => {
+        //return this.$nuxt.error({
+        //  statusCode: error.response.status,
+        //  message: error.response.message,
+        //})
+        response = {}
       })
       if (!response || !response.items) {
         this.total_books = 0

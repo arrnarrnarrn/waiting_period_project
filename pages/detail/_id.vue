@@ -12,11 +12,12 @@ export default {
   },
   async asyncData({ params, $axios }) {
     const url = '/api/pickup'
-    const response = await $axios.$get(url).catch((error) => {
-      return this.$nuxt.error({
-        statusCode: error.response.status,
-        message: error.response.message,
-      })
+    let response = await $axios.$get(url).catch((error) => {
+      //return this.$nuxt.error({
+      //  statusCode: error.response.status,
+      //  message: error.response.message,
+      //})
+      response = {}
     })
     return { id: params.id, book: params.bookDetail, pickup: response }
   },
@@ -43,11 +44,12 @@ export default {
   methods: {
     async getBook() {
       const url = `https://www.googleapis.com/books/v1/volumes?q=?id=${this.id}`
-      const response = await this.$axios.$get(url).catch((error) => {
-        return this.$nuxt.error({
-          statusCode: error.response.status,
-          message: error.response.message,
-        })
+      let response = await this.$axios.$get(url).catch((error) => {
+        //return this.$nuxt.error({
+        //  statusCode: error.response.status,
+        //  message: error.response.message,
+        //})
+        response = {}
       })
       if (!response.items) {
         return false
