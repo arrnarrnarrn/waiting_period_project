@@ -20,31 +20,35 @@ export default {
     const comicUrl = '/api/pickup/comic'
     const programmingUrl = '/api/pickup/programming'
     const designUrl = '/api/pickup/design'
-    const response = await $axios.$get(url).catch((error) => {
-      return this.$nuxt.error({
-        statusCode: error.response.status,
-        message: error.response.message,
-      })
+    let response = await $axios.$get(url).catch((error) => {
+      //return this.$nuxt.error({
+      //  statusCode: error.response.status,
+      //  message: error.response.message,
+      //})
+      response = {}
     })
-    const comicResponse = await $axios.$get(comicUrl).catch((error) => {
-      return this.$nuxt.error({
-        statusCode: error.response.status,
-        message: error.response.message,
-      })
+    let comicResponse = await $axios.$get(comicUrl).catch((error) => {
+      //return this.$nuxt.error({
+      //  statusCode: error.response.status,
+      //  message: error.response.message,
+      //})
+      comicResponse = {}
     })
-    const programmingResponse = await $axios
+    let programmingResponse = await $axios
       .$get(programmingUrl)
       .catch((error) => {
-        return this.$nuxt.error({
-          statusCode: error.response.status,
-          message: error.response.message,
-        })
+        //return this.$nuxt.error({
+        //  statusCode: error.response.status,
+        //  message: error.response.message,
+        //})
+        programmingResponse = {}
       })
-    const designResponse = await $axios.$get(designUrl).catch((error) => {
-      return this.$nuxt.error({
-        statusCode: error.response.status,
-        message: error.response.message,
-      })
+    let designResponse = await $axios.$get(designUrl).catch((error) => {
+      //return this.$nuxt.error({
+      //  statusCode: error.response.status,
+      //  message: error.response.message,
+      //})
+      designResponse = {}
     })
     return {
       pickup: response,
