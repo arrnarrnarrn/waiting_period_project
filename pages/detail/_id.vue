@@ -1,6 +1,6 @@
 <template>
   <div>
-    <the-detail :id="id" :book="bookData" :pickup="pickup" :related="related" />
+    <the-detail :id="id" :book="book" :pickup="pickup" :related="related" />
   </div>
 </template>
 
@@ -27,11 +27,6 @@ export default {
       related: {},
       title: '',
     }
-  },
-  computed: {
-    bookData() {
-      return this.book
-    },
   },
   created() {
     if (!this.book) {
