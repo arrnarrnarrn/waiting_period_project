@@ -2,7 +2,6 @@
   <div>
     <the-search-form />
     <the-advanced-book-detail :id="id" :book="bookData" />
-    {{ bookData }}
     <section v-if="isRelated" class="section pale-green">
       <div class="section_wrap">
         <h1 class="section-title">Related Books</h1>
