@@ -1,6 +1,14 @@
 <template>
   <div>
-    <the-home
+    <the-home-pc
+      v-if="$device.isDesktop"
+      :pickup="pickup"
+      :comic-pickup="comicPickup"
+      :programming-pickup="programmingPickup"
+      :design-pickup="designPickup"
+    />
+    <the-home-sp
+      v-else
       :pickup="pickup"
       :comic-pickup="comicPickup"
       :programming-pickup="programmingPickup"
@@ -10,10 +18,12 @@
 </template>
 
 <script>
-import TheHome from '@/components/pc/template/TheHome.vue'
+import TheHomePc from '@/components/pc/template/TheHome.vue'
+import TheHomeSp from '@/components/sp/template/TheHome.vue'
 export default {
   components: {
-    TheHome,
+    TheHomePc,
+    TheHomeSp,
   },
   async asyncData({ $axios }) {
     const url = '/api/pickup'
