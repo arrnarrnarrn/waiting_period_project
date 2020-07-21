@@ -8,23 +8,29 @@
     </section>
     <the-search-form />
     <section class="section pale-green">
-      <div class="section_wrap">
-        <the-basic-slider
-          v-if="isComicPickup"
-          :slider-item="comicPickup"
-          label="Comic"
-        />
-        <the-basic-slider
-          v-if="isProgrammingPickup"
-          :slider-item="programmingPickup"
-          label="Programming"
-        />
-        <the-basic-slider
-          v-if="isDesignPickup"
-          :slider-item="designPickup"
-          label="Design"
-        />
-      </div>
+      <ul class="section_wrap">
+        <li class="pickup_item">
+          <the-basic-slider
+            v-if="isComicPickup"
+            :slider-item="comicPickup"
+            label="Comic"
+          />
+        </li>
+        <li class="pickup_item">
+          <the-basic-slider
+            v-if="isProgrammingPickup"
+            :slider-item="programmingPickup"
+            label="Programming"
+          />
+        </li>
+        <li class="pickup_item">
+          <the-basic-slider
+            v-if="isDesignPickup"
+            :slider-item="designPickup"
+            label="Design"
+          />
+        </li>
+      </ul>
     </section>
   </div>
 </template>
@@ -118,6 +124,13 @@ export default {
   padding-top: 15px;
   &-text {
     color: red;
+  }
+}
+
+.pickup_item {
+  margin-bottom: 32px;
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 </style>

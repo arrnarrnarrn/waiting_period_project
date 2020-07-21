@@ -1,31 +1,32 @@
 <template>
   <div class="basicSlider">
     <h1 class="section-title">{{ label }}</h1>
-    <div class="basicSlider_container">
-      <swiper ref="mySwiper" :options="swiperOptions" class="basicSlider_list">
-        <swiper-slide
-          v-for="(item, index) in sliderItems"
-          :key="index"
-          class="basicSlider_item"
-        >
-          <nuxt-link
-            :to="{
-              name: 'detail-id',
-              params: { id: item.id, bookDetail: item },
-            }"
-            class="basicSlider_link"
-            rel="noopener noreferrer"
+    <div class="basicSlider_wrapper">
+      <div v-swiper="swiperOptions" class="basicSlider_container">
+        <div class="swiper-wrapper basicSlider_list">
+          <div
+            v-for="(item, index) in sliderItems"
+            :key="index"
+            class="swiper-slide basicSlider_item"
           >
-            {{ item }}
-            <img class="basicSlider_img" :src="thumbnail(item)" alt="" />
-          </nuxt-link>
-        </swiper-slide>
+            <nuxt-link
+              :to="{
+                name: 'detail-id',
+                params: { id: item.id, bookDetail: item },
+              }"
+              class="basicSlider_link"
+              rel="noopener noreferrer"
+            >
+              <img class="basicSlider_img" :src="thumbnail(item)" alt="" />
+            </nuxt-link>
+          </div>
+        </div>
         <div
           slot="pagination"
           class="swiper-pagination swiper-pagination-bullets swiper-basicSlider-bullets"
           :class="swiperPaginationName"
         ></div>
-      </swiper>
+      </div>
       <div
         slot="button-prev"
         class="swiper-button-prev"
@@ -76,9 +77,6 @@ export default {
     }
   },
   computed: {
-    swiper() {
-      return this.$refs.mySwiper.$swiper
-    },
     swiperPaginationName() {
       const swiperPaginationName = `swiper-pagination-${this.label}`
       return swiperPaginationName
@@ -109,9 +107,12 @@ export default {
 .basicSlider {
   width: 992px;
   margin: 0 auto;
+  &_wrapper {
+    position: relative;
+  }
   &_container {
-    width: 992px;
-    padding: 0 48px;
+    width: 897px;
+    padding: 0;
     margin: 0 auto;
     position: relative;
   }
@@ -129,7 +130,16 @@ export default {
     width: 147px;
     height: 216px;
     object-fit: cover;
+    transition: opacity 0.2s ease-out;
+    &:hover {
+      opacity: 0.7;
+    }
   }
+}
+.swiper-button-prev,
+.swiper-button-next {
+  margin-top: 0;
+  top: 96px;
 }
 .swiper-button-prev {
   height: 24px;
@@ -137,7 +147,7 @@ export default {
   position: absolute;
   left: 0;
   &::after {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
   }
 }
@@ -147,7 +157,7 @@ export default {
   position: absolute;
   right: 0;
   &::after {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
   }
 }
@@ -157,6 +167,7 @@ export default {
 }
 .swiper-basicSlider-bullets {
   & > .swiper-pagination-bullet {
+    margin: 0 8px;
     width: 10px;
     height: 10px;
     border: 1px solid $main-color;
