@@ -1,21 +1,35 @@
 <template>
   <div>
-    <the-header />
-    <nuxt />
-    <the-sns />
-    <the-footer />
+    <div v-if="$device.isDesktop">
+      <the-header-pc />
+      <nuxt />
+      <the-sns-pc />
+      <the-footer-pc />
+    </div>
+    <div v-else>
+      <the-header-sp />
+      <nuxt />
+      <the-sns-sp />
+      <the-footer-sp />
+    </div>
   </div>
 </template>
 <script>
-import TheHeader from '@/components/pc/organism/TheHeader.vue'
-import TheSns from '@/components/pc/molecules/TheSns.vue'
-import TheFooter from '@/components/pc/organism/TheFooter.vue'
+import TheHeaderPc from '@/components/pc/organism/TheHeader.vue'
+import TheSnsPc from '@/components/pc/molecules/TheSns.vue'
+import TheFooterPc from '@/components/pc/organism/TheFooter.vue'
+import TheHeaderSp from '@/components/sp/organism/TheHeader.vue'
+import TheSnsSp from '@/components/sp/molecules/TheSns.vue'
+import TheFooterSp from '@/components/sp/organism/TheFooter.vue'
 
 export default {
   components: {
-    TheHeader,
-    TheSns,
-    TheFooter,
+    TheHeaderPc,
+    TheSnsPc,
+    TheFooterPc,
+    TheHeaderSp,
+    TheSnsSp,
+    TheFooterSp,
   },
 }
 </script>
@@ -36,7 +50,6 @@ html {
 
 body {
   font-size: 1.6rem;
-  min-width: 1040px;
 }
 
 *,

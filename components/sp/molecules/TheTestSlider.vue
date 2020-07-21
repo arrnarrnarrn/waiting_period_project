@@ -1,58 +1,28 @@
 <template>
   <div class="basicSlider">
-    <h1 class="section-title">{{ label }}</h1>
     <div class="basicSlider_container">
       <swiper ref="mySwiper" :options="swiperOptions" class="basicSlider_list">
-        <swiper-slide
-          v-for="(item, index) in sliderItems"
-          :key="index"
-          class="basicSlider_item"
-        >
-          <nuxt-link
-            :to="{
-              name: 'detail-id',
-              params: { id: item.id, bookDetail: item },
-            }"
-            class="basicSlider_link"
-            rel="noopener noreferrer"
-          >
-            {{ item }}
-            <img class="basicSlider_img" :src="thumbnail(item)" alt="" />
-          </nuxt-link>
+        <swiper-slide v-for="index in 5" :key="index" class="basicSlider_item">
+          <the-card />
         </swiper-slide>
         <div
           slot="pagination"
           class="swiper-pagination swiper-pagination-bullets swiper-basicSlider-bullets"
-          :class="swiperPaginationName"
         ></div>
       </swiper>
-      <div
-        slot="button-prev"
-        class="swiper-button-prev"
-        :class="swiperPrevName"
-      ></div>
-      <div
-        slot="button-next"
-        class="swiper-button-next"
-        :class="swiperNextName"
-      ></div>
+      <div slot="button-prev" class="swiper-button-prev"></div>
+      <div slot="button-next" class="swiper-button-next"></div>
     </div>
   </div>
 </template>
 
 <script>
+import TheCard from '@/components/sp/molecules/TheCard.vue'
 import altImg from '~/assets/images/image_not_found.jpg'
 export default {
   name: 'Carrousel',
-  props: {
-    label: {
-      type: String,
-      default: 'Label',
-    },
-    sliderItem: {
-      type: Object,
-      default: () => {},
-    },
+  components: {
+    TheCard,
   },
   data() {
     return {
@@ -60,16 +30,16 @@ export default {
       sliderData: this.sliderItem,
       swiperOptions: {
         loop: true,
-        slidesPerView: 5,
-        slidesPerGroup: 5,
+        slidesPerView: 1.4,
+        centeredSlides: true,
         spaceBetween: 40,
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
         },
         navigation: {
-          nextEl: `.swiper-button-next-${this.label}`,
-          prevEl: `.swiper-button-prev-${this.label}`,
+          nextEl: `.swiper-button-next`,
+          prevEl: `.swiper-button-prev`,
         },
         // Some Swiper option/callback...
       },
@@ -79,18 +49,10 @@ export default {
     swiper() {
       return this.$refs.mySwiper.$swiper
     },
-    swiperPaginationName() {
-      const swiperPaginationName = `swiper-pagination-${this.label}`
-      return swiperPaginationName
-    },
-    swiperNextName() {
-      const swiperNextName = `swiper-button-next-${this.label}`
-      return swiperNextName
-    },
-    swiperPrevName() {
-      const swiperPrevName = `swiper-button-prev-${this.label}`
-      return swiperPrevName
-    },
+    //swiperPaginationName() {
+    //  const swiperPaginationName = `swiper-pagination-${this.label}`
+    //  return swiperPaginationName
+    //},
     sliderItems() {
       return this.sliderData.items
     },
@@ -107,54 +69,48 @@ export default {
 </script>
 <style lang="scss" scoped>
 .basicSlider {
-  width: 992px;
+  width: 100%;
   margin: 0 auto;
   &_container {
-    width: 992px;
-    padding: 0 48px;
+    width: 100%;
     margin: 0 auto;
     position: relative;
   }
   &_list {
-    width: 897px;
+    width: 100%;
   }
   &_item {
-    width: 147px;
-    height: 216px;
+    // width: 147px;
+    // height: 216px;
   }
   &_link {
     display: block;
   }
   &_img {
-    width: 147px;
-    height: 216px;
-    object-fit: cover;
+    // width: 147px;
+    // height: 216px;
+    // object-fit: cover;
   }
 }
 .swiper-button-prev {
-  height: 24px;
-  color: #333;
+  opacity: 0;
+  height: 100%;
+  width: 10vw;
+  margin-top: 0;
   position: absolute;
   left: 0;
-  &::after {
-    font-size: 28px;
-    font-weight: bold;
-  }
+  top: 0;
 }
 .swiper-button-next {
-  height: 24px;
-  color: #333;
+  opacity: 0;
+  height: 100%;
+  width: 10vw;
+  margin-top: 0;
   position: absolute;
   right: 0;
-  &::after {
-    font-size: 28px;
-    font-weight: bold;
-  }
+  top: 0;
 }
-.swiper-pagination {
-  margin-top: 12px;
-  position: static;
-}
+
 .swiper-basicSlider-bullets {
   & > .swiper-pagination-bullet {
     width: 10px;
