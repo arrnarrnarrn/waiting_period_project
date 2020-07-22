@@ -1,7 +1,7 @@
 <template>
   <div>
     <the-search
-      :pickup="pickup"
+      :pickup="pickupItems"
       :total-books="total_books"
       :results="results"
     />
@@ -10,21 +10,15 @@
 
 <script>
 import TheSearch from '@/components/pc/template/TheSearch.vue'
+import { mapGetters } from 'vuex'
+
 export default {
   components: {
     TheSearch,
   },
-  async asyncData({ $axios }) {
-    const url = '/api/pickup'
-    let response = await $axios.$get(url).catch((error) => {
-      //return this.$nuxt.error({
-      //  statusCode: error.response.status,
-      //  message: error.response.message,
-      //})
-      response = {}
-    })
-    return {
-      pickup: response,
+  async asyncData({ $axios, store }) {
+    if (!store.state.api.pickup.length) {
+      await store.dispatch('api/pickup/fetchPickupItems')
     }
   },
   data() {
@@ -33,6 +27,9 @@ export default {
       query: this.$route.query.q,
       total_books: 0,
     }
+  },
+  computed: {
+    ...mapGetters('api/pickup', ['pickupItems']),
   },
   created() {
     this.getResults()

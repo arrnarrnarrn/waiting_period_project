@@ -1,31 +1,40 @@
 <template>
   <div>
-    <the-detail :id="id" :book="book" :pickup="pickup" :related="related" />
+    <the-detail
+      :id="id"
+      :book="book"
+      :pickup="pickupItems"
+      :related="related"
+    />
   </div>
 </template>
 
 <script>
 import TheDetail from '@/components/pc/template/TheDetail.vue'
+import { mapGetters } from 'vuex'
+
 export default {
   components: {
     TheDetail,
   },
-  async asyncData({ params, $axios }) {
+  async asyncData({ params, $axios, store }) {
+    if (!store.state.api.pickup.length) {
+      await store.dispatch('api/pickup/fetchPickupItems')
+    }
     try {
-      const url = '/api/pickup'
-      const response = await $axios.$get(url)
-      return { id: params.id, book: params.bookDetail, pickup: response }
+      return { id: params.id, book: params.bookDetail }
     } catch (err) {
-      const response = {}
-      return { id: params.id, book: params.bookDetail, pickup: response }
+      return { id: params.id, book: params.bookDetail }
     }
   },
   data() {
     return {
-      pickup: {},
       related: {},
       title: '',
     }
+  },
+  computed: {
+    ...mapGetters('api/pickup', ['pickupItems']),
   },
   created() {
     if (!this.book) {
