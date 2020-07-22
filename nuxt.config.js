@@ -13,7 +13,7 @@ export default {
     { path: '/api/pickup/design', handler: '~/api/designPickup.js' },
   ],
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    baseUrl: process.env.BASE_URL || 'https://waiting-nuxt-book.herokuapp.com',
   },
   head: {
     title: process.env.npm_package_name || '',
