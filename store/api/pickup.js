@@ -16,8 +16,10 @@ export const mutations = {
 
 export const actions = {
   async fetchPickupItems({ commit }) {
-    await axios.get(process.env.baseUrl + '/api/pickup').then((response) => {
-      commit('setPickupItems', { pickupItems: response.data })
-    })
+    await axios
+      .get('https://waiting-nuxt-book.herokuapp.com/api/pickup')
+      .then((response) => {
+        commit('setPickupItems', { pickupItems: response.data })
+      })
   },
 }
