@@ -2,14 +2,14 @@
   <div>
     <the-home-pc
       v-if="$device.isDesktop"
-      :pickup="pickup"
+      :pickup="pickupItems"
       :comic-pickup="comicPickup"
       :programming-pickup="programmingPickup"
       :design-pickup="designPickup"
     />
     <the-home-sp
       v-else
-      :pickup="pickup"
+      :pickup="pickupItems"
       :comic-pickup="comicPickup"
       :programming-pickup="programmingPickup"
       :design-pickup="designPickup"
@@ -20,23 +20,18 @@
 <script>
 import TheHomePc from '@/components/pc/template/TheHome.vue'
 import TheHomeSp from '@/components/sp/template/TheHome.vue'
+
+import { mapState, mapMutations, mapGetters, mapActions } from 'vuex'
+
 export default {
   components: {
     TheHomePc,
     TheHomeSp,
   },
-  async asyncData({ $axios }) {
-    const url = '/api/pickup'
+  async asyncData({ $axios, store }) {
     const comicUrl = '/api/pickup/comic'
     const programmingUrl = '/api/pickup/programming'
     const designUrl = '/api/pickup/design'
-    let response = await $axios.$get(url).catch((error) => {
-      //return this.$nuxt.error({
-      //  statusCode: error.response.status,
-      //  message: error.response.message,
-      //})
-      response = {}
-    })
     let comicResponse = await $axios.$get(comicUrl).catch((error) => {
       //return this.$nuxt.error({
       //  statusCode: error.response.status,
@@ -60,12 +55,18 @@ export default {
       //})
       designResponse = {}
     })
+    if (store.state.api.pickup.pickupItems.length) {
+      return
+    }
+    await store.dispatch('api/pickup/fetchPickupItems')
     return {
-      pickup: response,
       comicPickup: comicResponse,
       programmingPickup: programmingResponse,
       designPickup: designResponse,
     }
+  },
+  computed: {
+    ...mapGetters('api/pickup', ['pickupItems']),
   },
 }
 </script>

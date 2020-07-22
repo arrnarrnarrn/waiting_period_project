@@ -11,15 +11,14 @@ export default {
     TheDetail,
   },
   async asyncData({ params, $axios }) {
-    const url = '/api/pickup'
-    let response = await $axios.$get(url).catch((error) => {
-      //return this.$nuxt.error({
-      //  statusCode: error.response.status,
-      //  message: error.response.message,
-      //})
-      response = {}
-    })
-    return { id: params.id, book: params.bookDetail, pickup: response }
+    try {
+      const url = '/api/pickup'
+      const response = await $axios.$get(url)
+      return { id: params.id, book: params.bookDetail, pickup: response }
+    } catch (err) {
+      const response = {}
+      return { id: params.id, book: params.bookDetail, pickup: response }
+    }
   },
   data() {
     return {
