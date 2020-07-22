@@ -16,7 +16,7 @@ export const mutations = {
 
 export const actions = {
   async fetchPickupItems({ commit }) {
-    await axios.get('http://localhost:3000/api/pickup').then((response) => {
+    await axios.get(process.env.baseUrl + '/api/pickup').then((response) => {
       commit('setPickupItems', { pickupItems: response.data })
     })
   },
