@@ -3,15 +3,15 @@
     <the-home-pc
       v-if="$device.isDesktop"
       :pickup="pickupItems"
-      :comic-pickup="comicPickup"
-      :programming-pickup="programmingPickup"
-      :design-pickup="designPickup"
+      :comic-pickup="pickupComics"
+      :programming-pickup="pickupProgrammings"
+      :design-pickup="pickupDesigns"
     />
     <the-home-sp
       v-else
       :pickup="pickupItems"
-      :comic-pickup="comicPickup"
-      :programming-pickup="programmingPickup"
+      :comic-pickup="pickupComics"
+      :programming-pickup="pickupProgrammings"
       :design-pickup="designPickup"
     />
   </div>
@@ -29,44 +29,24 @@ export default {
     TheHomeSp,
   },
   async asyncData({ $axios, store }) {
-    const comicUrl = '/api/pickup/comic'
-    const programmingUrl = '/api/pickup/programming'
-    const designUrl = '/api/pickup/design'
-    let comicResponse = await $axios.$get(comicUrl).catch((error) => {
-      //return this.$nuxt.error({
-      //  statusCode: error.response.status,
-      //  message: error.response.message,
-      //})
-      comicResponse = {}
-    })
-    let programmingResponse = await $axios
-      .$get(programmingUrl)
-      .catch((error) => {
-        //return this.$nuxt.error({
-        //  statusCode: error.response.status,
-        //  message: error.response.message,
-        //})
-        programmingResponse = {}
-      })
-    let designResponse = await $axios.$get(designUrl).catch((error) => {
-      //return this.$nuxt.error({
-      //  statusCode: error.response.status,
-      //  message: error.response.message,
-      //})
-      designResponse = {}
-    })
-    if (store.state.api.pickup.pickupItems.length) {
-      return
+    if (!store.state.api.pickup.pickupItems.length) {
+      await store.dispatch('api/pickup/fetchPickupItems')
     }
-    await store.dispatch('api/pickup/fetchPickupItems')
-    return {
-      comicPickup: comicResponse,
-      programmingPickup: programmingResponse,
-      designPickup: designResponse,
+    if (!store.state.api.comicPickup.pickupComics.length) {
+      await store.dispatch('api/comicPickup/fetchPickupComics')
+    }
+    if (!store.state.api.designPickup.pickupDesigns.length) {
+      await store.dispatch('api/designPickup/fetchPickupDesigns')
+    }
+    if (!store.state.api.programmingPickup.pickupProgrammings.length) {
+      await store.dispatch('api/programmingPickup/fetchPickupProgrammings')
     }
   },
   computed: {
     ...mapGetters('api/pickup', ['pickupItems']),
+    ...mapGetters('api/comicPickup', ['pickupComics']),
+    ...mapGetters('api/designPickup', ['pickupDesigns']),
+    ...mapGetters('api/programmingPickup', ['pickupProgrammings']),
   },
 }
 </script>
