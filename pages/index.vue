@@ -21,7 +21,7 @@
 import TheHomePc from '@/components/pc/template/TheHome.vue'
 import TheHomeSp from '@/components/sp/template/TheHome.vue'
 
-import { mapState, mapMutations, mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
