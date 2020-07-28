@@ -1,10 +1,10 @@
 <template>
-  <div class="bookList_container">
-    <swiper ref="mySwiper" :options="swiperOptions" class="bookList">
-      <swiper-slide
+  <div ref="mySwiper" v-swiper="swiperOptions" class="bookList_container">
+    <div class="swiper-wrapper bookList">
+      <div
         v-for="(item, index) in bookLists"
         :key="index"
-        class="bookList_item"
+        class="swiper-slide bookList_item"
       >
         <nuxt-link
           :to="{
@@ -16,8 +16,8 @@
         >
           <img class="bookList_img" :src="thumbnail(item)" alt="" />
         </nuxt-link>
-      </swiper-slide>
-    </swiper>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -35,10 +35,11 @@ export default {
       altSrc: altImg,
       bookData: this.bookList,
       swiperOptions: {
-        loop: true,
+        loop: false,
         slidesPerView: 3,
         spaceBetween: 16,
         freeMode: true,
+        centeredSlides: false,
       },
     }
   },
@@ -74,19 +75,20 @@ export default {
 <style lang="scss" scoped>
 .bookList {
   &_container {
-    max-width: 480px;
+    //max-width: 480px;
     margin: 0 auto;
+    height: calc(155 / 375 * 100vw);
   }
   width: 100%;
   list-style-type: none;
   &_item {
-    width: 104px;
-    height: 153px;
+    //width: 104px;
+    //height: 153px;
   }
   &_img {
-    width: 104px;
-    height: 153px;
-    object-fit: cover;
+    object-fit: cover; /* IE: not support */
+    width: 100%;
+    height: 100%;
   }
 }
 </style>

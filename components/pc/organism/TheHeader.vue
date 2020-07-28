@@ -15,6 +15,7 @@ export default {}
 <style lang="scss" scoped>
 .header {
   width: 100%;
+  min-width: 1040px;
   background: $main-color;
   line-height: 1;
   &_wrap {
