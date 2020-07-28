@@ -55,18 +55,10 @@ export default {
       return this.book
     },
     isRelated() {
-      if (Object.keys(this.related).length) {
-        return true
-      } else {
-        return false
-      }
+      return Object.keys(this.related).length ? true : false
     },
     isPickup() {
-      if (Object.keys(this.pickup).length) {
-        return true
-      } else {
-        return false
-      }
+      return Object.keys(this.pickup).length ? true : false
     },
   },
 }

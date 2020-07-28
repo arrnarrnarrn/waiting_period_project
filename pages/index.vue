@@ -12,7 +12,7 @@
       :pickup="pickupItems"
       :comic-pickup="pickupComics"
       :programming-pickup="pickupProgrammings"
-      :design-pickup="designPickup"
+      :design-pickup="pickupDesigns"
     />
   </div>
 </template>

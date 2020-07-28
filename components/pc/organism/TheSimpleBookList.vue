@@ -33,10 +33,7 @@ export default {
   },
   computed: {
     isResults() {
-      if (!this.totalBooks) {
-        return false
-      }
-      return true
+      return this.totalBooks ? true : false
     },
   },
 }

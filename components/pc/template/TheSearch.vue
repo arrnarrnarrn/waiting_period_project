@@ -40,11 +40,7 @@ export default {
   },
   computed: {
     isPickup() {
-      if (Object.keys(this.pickup).length) {
-        return true
-      } else {
-        return false
-      }
+      return Object.keys(this.pickup).length ? true : false
     },
   },
 }

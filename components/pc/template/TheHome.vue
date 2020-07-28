@@ -65,32 +65,16 @@ export default {
   },
   computed: {
     isPickup() {
-      if (Object.keys(this.pickup).length) {
-        return true
-      } else {
-        return false
-      }
+      return Object.keys(this.pickup).length ? true : false
     },
     isComicPickup() {
-      if (Object.keys(this.comicPickup).length) {
-        return true
-      } else {
-        return false
-      }
+      return Object.keys(this.comicPickup).length ? true : false
     },
     isProgrammingPickup() {
-      if (Object.keys(this.programmingPickup).length) {
-        return true
-      } else {
-        return false
-      }
+      return Object.keys(this.programmingPickup).length ? true : false
     },
     isDesignPickup() {
-      if (Object.keys(this.designPickup).length) {
-        return true
-      } else {
-        return false
-      }
+      return Object.keys(this.designPickup).length ? true : false
     },
   },
 }

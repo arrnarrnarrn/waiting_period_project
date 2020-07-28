@@ -1,17 +1,21 @@
 <template>
   <div class="basicSlider">
-    <div class="basicSlider_container">
-      <swiper ref="mySwiper" :options="swiperOptions" class="basicSlider_list">
-        <swiper-slide v-for="index in 5" :key="index" class="basicSlider_item">
-          <the-card />
-        </swiper-slide>
+    <div ref="mySwiper" v-swiper="swiperOptions" class="basicSlider_container">
+      <div class="swiper-wrapper basicSlider_list">
         <div
-          slot="pagination"
-          class="swiper-pagination swiper-pagination-bullets swiper-basicSlider-bullets"
-        ></div>
-      </swiper>
+          v-for="index in 5"
+          :key="index"
+          class="swiper-slide basicSlider_item"
+        >
+          <the-card />
+        </div>
+      </div>
       <div slot="button-prev" class="swiper-button-prev"></div>
       <div slot="button-next" class="swiper-button-next"></div>
+      <div
+        slot="pagination"
+        class="swiper-pagination swiper-pagination-bullets swiper-basicSlider-bullets"
+      ></div>
     </div>
   </div>
 </template>
@@ -29,10 +33,10 @@ export default {
       altSrc: altImg,
       sliderData: this.sliderItem,
       swiperOptions: {
-        loop: true,
-        slidesPerView: 1.4,
-        centeredSlides: true,
-        spaceBetween: 40,
+        loop: false,
+        slidesPerView: 2.4,
+        centeredSlides: false,
+        spaceBetween: 16,
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
@@ -92,6 +96,12 @@ export default {
     // object-fit: cover;
   }
 }
+
+.swiper-pagination {
+  margin-top: 12px;
+  position: static;
+}
+
 .swiper-button-prev {
   opacity: 0;
   height: 100%;
