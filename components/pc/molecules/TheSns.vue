@@ -2,7 +2,7 @@
   <section class="sns">
     <div class="sns_wrap">
       <div class="sns_twitter">
-        <a :href="twitter">
+        <a :href="twitter" target="_blank" rel="noopener">
           <img
             class="sns_twitter-icon"
             src="~assets/images/twitter.png"
@@ -11,7 +11,7 @@
         </a>
       </div>
       <div class="sns_github">
-        <a :href="github">
+        <a :href="github" target="_blank" rel="noopener">
           <img
             class="sns_github-icon"
             src="~assets/images/github.png"
