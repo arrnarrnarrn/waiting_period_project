@@ -159,6 +159,7 @@ export default {
   margin: 0 auto;
   &_wrap {
     padding: 16px;
+    background: $back-white;
     border: 2px solid $main-color;
     border-radius: 2px;
   }
