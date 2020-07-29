@@ -6,7 +6,7 @@
         <the-book-list :book-list="pickup" />
       </div>
     </section>
-    <section v-if="isPickup" class="section-sp">
+    <section class="section-sp">
       <div class="section-sp_wrap">
         <h1 class="section-sp-title">Search Form</h1>
         <the-search-form />

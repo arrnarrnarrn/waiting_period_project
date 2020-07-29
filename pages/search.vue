@@ -1,6 +1,13 @@
 <template>
   <div>
-    <the-search
+    <the-search-pc
+      v-if="$device.isDesktop"
+      :pickup="pickupItems"
+      :total-books="total_books"
+      :results="results"
+    />
+    <the-search-sp
+      v-else
       :pickup="pickupItems"
       :total-books="total_books"
       :results="results"
@@ -9,12 +16,14 @@
 </template>
 
 <script>
-import TheSearch from '@/components/pc/template/TheSearch.vue'
+import TheSearchPc from '@/components/pc/template/TheSearch.vue'
+import TheSearchSp from '@/components/sp/template/TheSearch.vue'
 import { mapGetters } from 'vuex'
 
 export default {
   components: {
-    TheSearch,
+    TheSearchPc,
+    TheSearchSp,
   },
   async asyncData({ $axios, store }) {
     if (!store.state.api.pickup.length) {

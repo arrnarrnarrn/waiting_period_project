@@ -44,9 +44,6 @@ export default {
     }
   },
   computed: {
-    swiper() {
-      return this.$refs.mySwiper.$swiper
-    },
     bookLists() {
       if (!this.bookData) return false
       if (this.bookData.items) {
@@ -75,16 +72,12 @@ export default {
 <style lang="scss" scoped>
 .bookList {
   &_container {
-    //max-width: 480px;
     margin: 0 auto;
     height: calc(155 / 375 * 100vw);
   }
   width: 100%;
   list-style-type: none;
-  &_item {
-    //width: 104px;
-    //height: 153px;
-  }
+
   &_img {
     object-fit: cover; /* IE: not support */
     width: 100%;

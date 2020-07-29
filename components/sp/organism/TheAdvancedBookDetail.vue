@@ -72,7 +72,7 @@
 
 <script>
 import altImg from '~/assets/images/image_not_found.jpg'
-import TheBasicButtonLink from '@/components/pc/atoms/TheBasicButtonLink.vue'
+import TheBasicButtonLink from '@/components/sp/atoms/TheBasicButtonLink.vue'
 export default {
   components: {
     TheBasicButtonLink,
@@ -205,28 +205,26 @@ export default {
 .bookDetail {
   width: 100%;
   &_wrap {
-    width: 1040px;
-    padding: 56px 24px;
+    padding: 24px 16px;
     margin: 0 auto;
   }
   &_img {
-    width: 240px;
+    width: 160px;
     height: auto;
+    margin-bottom: 16px;
   }
   &_basic {
-    display: flex;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     &-info {
       flex: 1;
-      margin-left: 32px;
       color: $main-color;
       font-weight: bold;
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       &_title {
-        font-size: 2.4rem;
+        font-size: 1.8rem;
         margin-bottom: 8px;
         &-sub {
-          font-size: 1.8rem;
+          font-size: 1.6rem;
           margin-bottom: 8px;
         }
       }
@@ -294,17 +292,17 @@ export default {
   }
   &_description {
     color: $main-color;
-    font-size: 2.4rem;
+    font-size: 1.6rem;
     margin-bottom: 4px;
     &-text {
       color: $main-color;
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       text-align: justify;
       text-justify: inter-ideograph;
     }
   }
   &_buyLink {
-    margin-top: 24px;
+    margin-top: 16px;
     display: flex;
     justify-content: flex-end;
   }
