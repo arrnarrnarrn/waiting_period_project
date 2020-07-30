@@ -27,14 +27,17 @@ export default {
     TheDetailPc,
     TheDetailSp,
   },
-  async asyncData({ params, $axios, store }) {
+  async asyncData({ params, $axios, store, error }) {
     if (!store.state.api.pickup.length) {
       await store.dispatch('api/pickup/fetchPickupItems')
     }
     try {
       return { id: params.id, book: params.bookDetail }
     } catch (err) {
-      return { id: params.id, book: params.bookDetail }
+      return error({
+        statusCode: err.response.status,
+        message: err.response.data.message,
+      })
     }
   },
   data() {
@@ -57,12 +60,13 @@ export default {
   methods: {
     async getBook() {
       const url = `https://www.googleapis.com/books/v1/volumes?q=?id=${this.id}`
-      let response = await this.$axios.$get(url).catch((error) => {
-        //return this.$nuxt.error({
-        //  statusCode: error.response.status,
-        //  message: error.response.message,
-        //})
+      const encodedUrl = encodeURI(url)
+      let response = await this.$axios.$get(encodedUrl).catch((error) => {
         response = {}
+        return this.$nuxt.error({
+          statusCode: error.response.status,
+          message: error.response.message,
+        })
       })
       if (!response.items) {
         return false
@@ -74,7 +78,8 @@ export default {
     async getRelated() {
       if (this.title.length != 0) {
         const url = `https://www.googleapis.com/books/v1/volumes?q=${this.title}&maxResults=5`
-        const response = await this.$axios.$get(url)
+        const encodedUrl = encodeURI(url)
+        const response = await this.$axios.$get(encodedUrl)
         if (!response) {
           this.related = {}
         }

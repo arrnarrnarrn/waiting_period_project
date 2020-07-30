@@ -51,12 +51,13 @@ export default {
         return false
       }
       const url = `https://www.googleapis.com/books/v1/volumes?q=${this.query}`
-      let response = await this.$axios.$get(url).catch((error) => {
-        //return this.$nuxt.error({
-        //  statusCode: error.response.status,
-        //  message: error.response.message,
-        //})
+      const encodedUrl = encodeURI(url)
+      let response = await this.$axios.$get(encodedUrl).catch((error) => {
         response = {}
+        return this.$nuxt.error({
+          statusCode: error.response.status,
+          message: error.response.message,
+        })
       })
       if (!response || !response.items) {
         this.total_books = 0

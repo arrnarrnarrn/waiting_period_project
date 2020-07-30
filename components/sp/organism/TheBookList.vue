@@ -71,17 +71,20 @@ export default {
 
 <style lang="scss" scoped>
 .bookList {
+  width: 100%;
+  list-style-type: none;
   &_container {
     margin: 0 auto;
     height: calc(155 / 375 * 100vw);
   }
-  width: 100%;
-  list-style-type: none;
-
   &_img {
     object-fit: cover; /* IE: not support */
     width: 100%;
     height: 100%;
+    transition: opacity 0.2s ease-out;
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }
 </style>

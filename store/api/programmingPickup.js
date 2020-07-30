@@ -15,11 +15,18 @@ export const mutations = {
 }
 
 export const actions = {
-  async fetchPickupProgrammings({ commit }) {
-    await axios
-      .get(process.env.baseUrl + '/api/pickup/programming')
-      .then((response) => {
-        commit('setPickupProgrammings', { pickupProgrammings: response.data })
+  async fetchPickupProgrammings({ commit, error }) {
+    try {
+      await axios
+        .get(process.env.baseUrl + '/api/pickup/programming')
+        .then((response) => {
+          commit('setPickupProgrammings', { pickupProgrammings: response.data })
+        })
+    } catch (err) {
+      error({
+        statusCode: err.response.status,
+        message: err.response.data.message,
       })
+    }
   },
 }

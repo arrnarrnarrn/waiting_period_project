@@ -146,6 +146,10 @@ export default {
   &_img {
     width: 149px;
     height: auto;
+    transition: opacity 0.2s ease-out;
+    &:hover {
+      opacity: 0.7;
+    }
   }
   &_basic {
     display: flex;
