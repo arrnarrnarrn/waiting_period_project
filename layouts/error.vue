@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-    <h1 v-if="error.statusCode === 404">ページが見つかりません</h1>
-    <h1 v-else>エラーが発生しました</h1>
+    <h1>{{ message }}</h1>
     <nuxt-link to="/">ホーム</nuxt-link>
   </div>
 </template>
@@ -11,6 +10,14 @@ export default {
     error: {
       type: Object,
       default: () => {},
+    },
+  },
+  computed: {
+    message() {
+      if (this.error.statusCode === 404) {
+        return 'このページは存在しません。'
+      }
+      return this.error.message || `エラーが発生しました。`
     },
   },
 }
