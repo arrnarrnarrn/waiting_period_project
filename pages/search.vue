@@ -25,52 +25,40 @@ export default {
     TheSearchPc,
     TheSearchSp,
   },
-  async asyncData({ $axios, store }) {
+  watchQuery: true,
+  async asyncData({ route, $axios, store, error }) {
     if (!store.state.api.pickup.length) {
       await store.dispatch('api/pickup/fetchPickupItems')
     }
+    let search_results = {}
+    let total_books = 0
+    if (!route.query.q) {
+      return { results: {}, total_books: 0 }
+    }
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${route.query.q}`
+    const encodedUrl = encodeURI(url)
+    let response = await $axios.$get(encodedUrl).catch((error) => {
+      response = {}
+      return this.$nuxt.error({
+        statusCode: error.response.status,
+        message: error.response.message,
+      })
+    })
+    if (!response || !response.items) {
+      return { results: {}, total_books: 0 }
+    }
+    total_books = response.totalItems
+    search_results = Object.assign({}, response.items)
+    return { results: search_results, total_books: total_books }
   },
   data() {
     return {
       results: {},
-      query: this.$route.query.q,
       total_books: 0,
     }
   },
   computed: {
     ...mapGetters('api/pickup', ['pickupItems']),
-  },
-  created() {
-    this.getResults()
-  },
-  methods: {
-    async getResults() {
-      if (!this.query) {
-        this.results = {}
-        this.total_books = 0
-        return false
-      }
-      const url = `https://www.googleapis.com/books/v1/volumes?q=${this.query}`
-      const encodedUrl = encodeURI(url)
-      let response = await this.$axios.$get(encodedUrl).catch((error) => {
-        response = {}
-        return this.$nuxt.error({
-          statusCode: error.response.status,
-          message: error.response.message,
-        })
-      })
-      if (!response || !response.items) {
-        this.total_books = 0
-        return false
-      }
-      this.total_books = response.totalItems
-      this.results = Object.assign({}, response.items)
-    },
-  },
-  watchQuery(newQuery) {
-    this.$route.query.q = newQuery.q
-    this.query = newQuery.q
-    this.getResults()
   },
 }
 </script>

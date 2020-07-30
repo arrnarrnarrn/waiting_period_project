@@ -14,6 +14,7 @@ export default {
   ],
   env: {
     baseUrl: process.env.BASE_URL || 'https://waiting-nuxt-book.herokuapp.com',
+    //'http://localhost:3000'
   },
   head: {
     title: process.env.npm_package_name || '',
