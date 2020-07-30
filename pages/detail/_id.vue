@@ -31,8 +31,38 @@ export default {
     if (!store.state.api.pickup.length) {
       await store.dispatch('api/pickup/fetchPickupItems')
     }
+    let relatedBook = {}
+    if (!params.bookDetail) {
+      const url = `https://www.googleapis.com/books/v1/volumes?q=?id=${params.id}`
+      const encodedUrl = encodeURI(url)
+      let response = await $axios.$get(encodedUrl).catch((error) => {
+        response = {}
+        return this.$nuxt.error({
+          statusCode: error.response.status,
+          message: error.response.message,
+        })
+      })
+      if (!response.items) {
+        return this.$nuxt.error({
+          statusCode: error.response.status,
+          message: error.response.message,
+        })
+      }
+      params.bookDetail = Object.assign({}, response.items[0])
+    }
+    const bookTitle = params.bookDetail.volumeInfo.title
+    if (bookTitle.length != 0) {
+      const url = `https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&maxResults=5`
+      const encodedUrl = encodeURI(url)
+      const response = await $axios.$get(encodedUrl).catch((error) => {
+        return { id: params.id, book: params.bookDetail, related: {} }
+      })
+      if (response) {
+        relatedBook = Object.assign({}, response)
+      }
+    }
     try {
-      return { id: params.id, book: params.bookDetail }
+      return { id: params.id, book: params.bookDetail, related: relatedBook }
     } catch (err) {
       return error({
         statusCode: err.response.status,
@@ -48,46 +78,6 @@ export default {
   },
   computed: {
     ...mapGetters('api/pickup', ['pickupItems']),
-  },
-  created() {
-    if (!this.book) {
-      this.getBook()
-    } else {
-      this.title = this.book.volumeInfo.title
-      this.getRelated()
-    }
-  },
-  methods: {
-    async getBook() {
-      const url = `https://www.googleapis.com/books/v1/volumes?q=?id=${this.id}`
-      const encodedUrl = encodeURI(url)
-      let response = await this.$axios.$get(encodedUrl).catch((error) => {
-        response = {}
-        return this.$nuxt.error({
-          statusCode: error.response.status,
-          message: error.response.message,
-        })
-      })
-      if (!response.items) {
-        return false
-      }
-      this.book = Object.assign({}, response.items[0])
-      this.title = this.book.volumeInfo.title
-      this.getRelated()
-    },
-    async getRelated() {
-      if (this.title.length != 0) {
-        const url = `https://www.googleapis.com/books/v1/volumes?q=${this.title}&maxResults=5`
-        const encodedUrl = encodeURI(url)
-        const response = await this.$axios.$get(encodedUrl)
-        if (!response) {
-          this.related = {}
-        }
-        this.related = Object.assign({}, response)
-      } else {
-        this.related = {}
-      }
-    },
   },
 }
 </script>
