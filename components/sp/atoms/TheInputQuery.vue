@@ -91,6 +91,9 @@ export default {
     outline: none;
     font-size: 1.4rem;
     padding: 4px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     &:focus + .input_label {
       top: -10px;
       font-size: 1.2rem;

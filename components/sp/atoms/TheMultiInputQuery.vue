@@ -113,6 +113,9 @@ export default {
     outline: none;
     font-size: 1.4rem;
     padding: 4px 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     &:focus + .select_label {
       top: -8px;
       font-size: 1.2rem;
