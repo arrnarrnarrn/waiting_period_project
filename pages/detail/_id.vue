@@ -35,15 +35,15 @@ export default {
     if (!params.bookDetail) {
       const url = `https://www.googleapis.com/books/v1/volumes?q=?id=${params.id}`
       const encodedUrl = encodeURI(url)
-      let response = await $axios.$get(encodedUrl).catch((error) => {
+      let response = await $axios.$get(encodedUrl).catch((err) => {
         response = {}
-        return this.$nuxt.error({
-          statusCode: error.response.status,
-          message: error.response.message,
+        return error({
+          statusCode: err.response.status,
+          message: err.response.message,
         })
       })
       if (!response.items) {
-        return this.$nuxt.error({
+        return error({
           statusCode: error.response.status,
           message: error.response.message,
         })

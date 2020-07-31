@@ -37,11 +37,11 @@ export default {
     }
     const url = `https://www.googleapis.com/books/v1/volumes?q=${route.query.q}`
     const encodedUrl = encodeURI(url)
-    let response = await $axios.$get(encodedUrl).catch((error) => {
+    let response = await $axios.$get(encodedUrl).catch((err) => {
       response = {}
-      return this.$nuxt.error({
-        statusCode: error.response.status,
-        message: error.response.message,
+      return error({
+        statusCode: err.response.status,
+        message: err.response.message,
       })
     })
     if (!response || !response.items) {
