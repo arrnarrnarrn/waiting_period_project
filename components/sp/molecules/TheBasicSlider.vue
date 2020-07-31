@@ -46,12 +46,21 @@ export default {
       sliderData: this.sliderItem,
       swiperOptions: {
         loop: false,
-        slidesPerView: 2.4,
-        spaceBetween: 16,
+        slidesPerView: 3.4,
+        spaceBetween: 8,
         freeMode: true,
         slidesOffsetBefore: 16,
         slidesOffsetAfter: 16,
-        // Some Swiper option/callback...
+        breakpoints: {
+          750: {
+            slidesPerView: 5.2,
+            spaceBetween: 24,
+          },
+          481: {
+            slidesPerView: 4.8,
+            spaceBetween: 16,
+          },
+        },
       },
     }
   },
@@ -80,6 +89,13 @@ export default {
     padding: 0;
     margin: 0 auto;
     position: relative;
+    height: calc(149 / 375 * 100vw);
+    @media screen and (min-width: 481px) {
+      height: calc(124 / 480 * 100vw);
+    }
+    @media screen and (min-width: 750px) {
+      height: calc(178 / 750 * 100vw);
+    }
   }
   &_link {
     display: block;

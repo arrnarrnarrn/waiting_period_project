@@ -28,6 +28,9 @@ export default {
 <style lang="scss" scoped>
 .simpleSearch {
   display: flex;
+  width: 100%;
+  max-width: 992px;
+  margin: 0 auto;
   &_input {
     border: 2px solid $main-color;
     border-right: none;
