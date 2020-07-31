@@ -155,8 +155,6 @@ export default {
 <style lang="scss" scoped>
 .advancedSearch {
   width: 100%;
-  max-width: 992px;
-  margin: 0 auto;
   &_wrap {
     padding: 16px;
     background: $back-white;
