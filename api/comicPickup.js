@@ -62,33 +62,38 @@ const comicPickList = {
           'https://play.google.com/store/books/details?id=0PDJCwAAQBAJ',
       },
     },
-    //三冊目
+    //3冊目
     {
-      id: 'XofSDwAAQBAJ',
+      id: '3D3bPQAACAAJ',
       volumeInfo: {
-        title: 'ソードアート・オンライン キス・アンド・フライ１',
-        publisher: 'KADOKAWA',
-        publishedDate: '2020-03-10',
+        title: 'ヒカルの碁',
+        subtitle: 'KAIO vs.HAZE',
+        authors: ['ほったゆみ', '小畑健', '横手美智子'],
+        publishedDate: '2003-03-15',
         description:
-          '『ソードアート・オンライン』珠玉の短編集をコミカライズ！ 『ザ・デイ・ビフォア』――《SAO》攻略のさなか、キリトはアスナにプロポーズした。新婚生活に向け、キリトはかねてから計画していた新居の購入に踏み切るのだが、そこで待っていたのは予想外の事態で!? 『ザ・デイ・アフター』――新生《ALO》をプレイするアスナは、謎の離脱現象に襲われていた。アスナの脳裏に浮かぶ、謎の記憶。それには、かつて《SAO》でキリトが出会ったあの少女が関わっており……。 『虹の橋』（前編）――新生《ALO》の海底神殿にまつわるクエストを無事クリアしたキリトたち。だがクエストの内容はどうにも不可解で、一行は推理を巡らせるのだが……？',
+          '中学生になり、囲碁部に入ったヒカルは、囲碁大会出場へ向けて、新メンバーを探し始める。しかし、ようやく見つけた三谷というその生徒は、大人相手の賭け碁で、巧みに不正をはたらいていた!一方、ヒカルに対局を断られたアキラは、自分も海王中囲碁部に入部。周囲の戸惑いやイジメにも屈せず、一心にヒカル(=佐為)との対局を待ち望んでいた。',
         industryIdentifiers: [
           {
-            type: 'OTHER',
-            identifier: 'PKEY:04913106A09272100000',
+            type: 'ISBN_10',
+            identifier: '408703125X',
+          },
+          {
+            type: 'ISBN_13',
+            identifier: '9784087031256',
           },
         ],
-        categories: ['Comics & Graphic Novels'],
+        pageCount: 216,
         imageLinks: {
           smallThumbnail:
-            'http://books.google.com/books/content?id=XofSDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
+            'http://books.google.com/books/content?id=3D3bPQAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api',
           thumbnail:
-            'http://books.google.com/books/content?id=XofSDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+            'http://books.google.com/books/content?id=3D3bPQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
         },
         language: 'ja',
         infoLink:
-          'https://play.google.com/store/books/details?id=XofSDwAAQBAJ&source=gbs_api',
+          'http://books.google.co.jp/books?id=3D3bPQAACAAJ&dq=%E3%83%92%E3%82%AB%E3%83%AB%E3%81%AE%E7%A2%81&hl=&source=gbs_api',
         canonicalVolumeLink:
-          'https://play.google.com/store/books/details?id=XofSDwAAQBAJ',
+          'https://books.google.com/books/about/%E3%83%92%E3%82%AB%E3%83%AB%E3%81%AE%E7%A2%81.html?hl=&id=3D3bPQAACAAJ',
       },
     },
     //四冊目
@@ -211,36 +216,31 @@ const comicPickList = {
     },
     //8冊目
     {
-      id: '3D3bPQAACAAJ',
+      id: 'XofSDwAAQBAJ',
       volumeInfo: {
-        title: 'ヒカルの碁',
-        subtitle: 'KAIO vs.HAZE',
-        authors: ['ほったゆみ', '小畑健', '横手美智子'],
-        publishedDate: '2003-03-15',
+        title: 'ソードアート・オンライン キス・アンド・フライ１',
+        publisher: 'KADOKAWA',
+        publishedDate: '2020-03-10',
         description:
-          '中学生になり、囲碁部に入ったヒカルは、囲碁大会出場へ向けて、新メンバーを探し始める。しかし、ようやく見つけた三谷というその生徒は、大人相手の賭け碁で、巧みに不正をはたらいていた!一方、ヒカルに対局を断られたアキラは、自分も海王中囲碁部に入部。周囲の戸惑いやイジメにも屈せず、一心にヒカル(=佐為)との対局を待ち望んでいた。',
+          '『ソードアート・オンライン』珠玉の短編集をコミカライズ！ 『ザ・デイ・ビフォア』――《SAO》攻略のさなか、キリトはアスナにプロポーズした。新婚生活に向け、キリトはかねてから計画していた新居の購入に踏み切るのだが、そこで待っていたのは予想外の事態で!? 『ザ・デイ・アフター』――新生《ALO》をプレイするアスナは、謎の離脱現象に襲われていた。アスナの脳裏に浮かぶ、謎の記憶。それには、かつて《SAO》でキリトが出会ったあの少女が関わっており……。 『虹の橋』（前編）――新生《ALO》の海底神殿にまつわるクエストを無事クリアしたキリトたち。だがクエストの内容はどうにも不可解で、一行は推理を巡らせるのだが……？',
         industryIdentifiers: [
           {
-            type: 'ISBN_10',
-            identifier: '408703125X',
-          },
-          {
-            type: 'ISBN_13',
-            identifier: '9784087031256',
+            type: 'OTHER',
+            identifier: 'PKEY:04913106A09272100000',
           },
         ],
-        pageCount: 216,
+        categories: ['Comics & Graphic Novels'],
         imageLinks: {
           smallThumbnail:
-            'http://books.google.com/books/content?id=3D3bPQAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api',
+            'http://books.google.com/books/content?id=XofSDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
           thumbnail:
-            'http://books.google.com/books/content?id=3D3bPQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
+            'http://books.google.com/books/content?id=XofSDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
         },
         language: 'ja',
         infoLink:
-          'http://books.google.co.jp/books?id=3D3bPQAACAAJ&dq=%E3%83%92%E3%82%AB%E3%83%AB%E3%81%AE%E7%A2%81&hl=&source=gbs_api',
+          'https://play.google.com/store/books/details?id=XofSDwAAQBAJ&source=gbs_api',
         canonicalVolumeLink:
-          'https://books.google.com/books/about/%E3%83%92%E3%82%AB%E3%83%AB%E3%81%AE%E7%A2%81.html?hl=&id=3D3bPQAACAAJ',
+          'https://play.google.com/store/books/details?id=XofSDwAAQBAJ',
       },
     },
     //9冊目
