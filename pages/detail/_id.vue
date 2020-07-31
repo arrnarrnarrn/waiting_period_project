@@ -44,8 +44,8 @@ export default {
       })
       if (!response.items) {
         return error({
-          statusCode: error.response.status,
-          message: error.response.message,
+          statusCode: 404,
+          message: 'Page Not Found',
         })
       }
       params.bookDetail = Object.assign({}, response.items[0])
