@@ -37,6 +37,9 @@ export default {
     color: $main-color;
     padding: 0 12px;
     outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     &::placeholder {
       font-size: 2.4rem;
       color: $main-color;
