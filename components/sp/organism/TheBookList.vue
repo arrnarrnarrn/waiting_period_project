@@ -40,6 +40,16 @@ export default {
         spaceBetween: 16,
         freeMode: true,
         centeredSlides: false,
+        breakpoints: {
+          750: {
+            slidesPerView: 5,
+            spaceBetween: 32,
+          },
+          481: {
+            slidesPerView: 4,
+            spaceBetween: 24,
+          },
+        },
       },
     }
   },
@@ -76,6 +86,12 @@ export default {
   &_container {
     margin: 0 auto;
     height: calc(155 / 375 * 100vw);
+    @media screen and (min-width: 481px) {
+      height: calc(136 / 480 * 100vw);
+    }
+    @media screen and (min-width: 750px) {
+      height: calc(164 / 750 * 100vw);
+    }
   }
   &_img {
     object-fit: cover; /* IE: not support */
