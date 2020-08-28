@@ -1,7 +1,7 @@
 <template>
   <section class="advancedSearch">
     <div class="advancedSearch_wrap">
-      <h1 class="section-title u-mb-0">Advanced Search</h1>
+      <h1 class="advancedSearch_title">Advanced Search</h1>
       <ul class="advancedSearch_list">
         <li class="advancedSearch_item">
           <the-input-query
@@ -157,6 +157,12 @@ export default {
   width: 100%;
   max-width: 992px;
   margin: 0 auto;
+  &_title {
+    font-family: 'marukame', 'honokamaru', 'roboto';
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: $main-color;
+  }
   &_wrap {
     padding: 24px 32px;
     border: 2px solid $main-color;

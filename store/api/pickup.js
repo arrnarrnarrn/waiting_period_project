@@ -15,16 +15,13 @@ export const mutations = {
 }
 
 export const actions = {
-  async fetchPickupItems({ commit, error }) {
+  async fetchPickupItems({ commit }) {
     try {
       await axios.get(process.env.baseUrl + '/api/pickup').then((response) => {
         commit('setPickupItems', { pickupItems: response.data })
       })
     } catch (err) {
-      error({
-        statusCode: err.response.status,
-        message: err.response.data.message,
-      })
+      commit('setPickupItems', { pickupItems: {} })
     }
   },
 }

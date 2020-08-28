@@ -43,7 +43,10 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~plugins/vue-awesome-swiper', mode: 'client' }],
+  plugins: [
+    { src: '~plugins/vue-awesome-swiper', mode: 'client' },
+    '@/plugins/mixin-common-methods',
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -53,7 +56,7 @@ export default {
    */
   modules: ['@nuxtjs/axios', '@nuxtjs/style-resources', 'nuxt-device-detect'],
   styleResources: {
-    scss: ['~assets/css/variables.scss'],
+    scss: ['~assets/css/variables.scss', '~assets/css/style.scss'],
   },
   /*
    ** Build configuration

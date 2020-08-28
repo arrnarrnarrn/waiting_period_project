@@ -94,108 +94,56 @@ export default {
   },
   computed: {
     thumbnail() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.imageLinks) {
-        return this.altSrc
-      }
-      return this.book.volumeInfo.imageLinks.thumbnail
+      return this.book?.volumeInfo?.imageLinks?.thumbnail
+        ? this.replacedAmp(this.book.volumeInfo.imageLinks.thumbnail)
+        : this.altSrc
     },
     title() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.title) {
-        return ''
-      }
-      return this.book.volumeInfo.title
+      return this.book?.volumeInfo?.title ?? ''
     },
     subTitle() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.subtitle) {
-        return ''
-      }
-      return this.book.volumeInfo.subtitle
+      return this.book?.volumeInfo?.subtitle ?? ''
     },
     authors() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.authors) {
-        return false
-      }
-      return this.book.volumeInfo.authors
+      return this.book?.volumeInfo?.authors ?? ''
     },
     publisher() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.publisher) {
-        return ''
-      }
-      return this.book.volumeInfo.publisher
+      return this.book?.volumeInfo?.publisher ?? ''
     },
     publishedDate() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.publishedDate) {
-        return ''
-      }
-      return this.book.volumeInfo.publishedDate
+      return this.book?.volumeInfo?.publishedDate ?? ''
     },
     mainCategory() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.mainCategory) {
-        return ''
-      }
-      return this.book.volumeInfo.mainCategory
+      return this.book?.volumeInfo?.mainCategory ?? ''
     },
     categories() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.categories) {
-        return false
-      }
-      return this.book.volumeInfo.categories
+      return this.book?.volumeInfo?.categories ?? ''
     },
     pageCount() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.pageCount) {
-        return ''
-      }
-      return this.book.volumeInfo.pageCount
+      return this.book?.volumeInfo?.pageCount ?? ''
     },
     isbn10() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.industryIdentifiers) {
-        return false
-      }
+      if (!this.book?.volumeInfo?.industryIdentifiers) return ''
       const isbn10 = this.book.volumeInfo.industryIdentifiers.find((obj) => {
         return obj.type === 'ISBN_10'
       })
       return isbn10
     },
     isbn13() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.industryIdentifiers) {
-        return false
-      }
+      if (!this.book?.volumeInfo?.industryIdentifiers) return ''
       const isbn13 = this.book.volumeInfo.industryIdentifiers.find((obj) => {
         return obj.type === 'ISBN_13'
       })
       return isbn13
     },
     country() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.language) {
-        return ''
-      }
-      return this.book.volumeInfo.language
+      return this.book?.volumeInfo?.language ?? ''
     },
     description() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.description) {
-        return ''
-      }
-      return this.book.volumeInfo.description
+      return this.book?.volumeInfo?.description ?? ''
     },
     buyLink() {
-      if (!this.book) return ''
-      if (!this.book.volumeInfo || !this.book.volumeInfo.infoLink) {
-        return ''
-      }
-      return this.book.volumeInfo.infoLink
+      return this.book?.volumeInfo?.infoLink ?? ''
     },
   },
 }

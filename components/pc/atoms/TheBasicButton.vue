@@ -53,10 +53,10 @@ export default {
   &_text {
     font-size: 1.4rem;
     font-weight: bold;
-    font-family: 'marukame', 'honokamaru', Roboto, '游ゴシック体', YuGothic,
-      '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック', 'Yu Gothic',
-      -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial,
-      sans-serif;
+    //font-family: 'marukame', 'honokamaru', Roboto, '游ゴシック体', YuGothic,
+    //  '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック', 'Yu Gothic',
+    //  -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial,
+    //  sans-serif;
   }
 }
 .white {

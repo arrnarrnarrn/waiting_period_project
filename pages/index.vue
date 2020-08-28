@@ -31,15 +31,19 @@ export default {
   async asyncData({ $axios, store }) {
     if (!store.state.api.pickup.pickupItems.length) {
       await store.dispatch('api/pickup/fetchPickupItems')
+      console.log('pickupNotSet')
     }
     if (!store.state.api.comicPickup.pickupComics.length) {
       await store.dispatch('api/comicPickup/fetchPickupComics')
+      console.log('ComicPickupNotSet')
     }
     if (!store.state.api.designPickup.pickupDesigns.length) {
       await store.dispatch('api/designPickup/fetchPickupDesigns')
+      console.log('DesignPickupNotSet')
     }
     if (!store.state.api.programmingPickup.pickupProgrammings.length) {
       await store.dispatch('api/programmingPickup/fetchPickupProgrammings')
+      console.log('ProgrammingPickupNotSet')
     }
   },
   computed: {

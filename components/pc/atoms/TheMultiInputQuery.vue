@@ -71,7 +71,7 @@ export default {
 .select {
   &_wrap {
     width: 280px;
-    margin-top: 24px;
+    margin-top: 16px;
     position: relative;
     &::after {
       content: '';

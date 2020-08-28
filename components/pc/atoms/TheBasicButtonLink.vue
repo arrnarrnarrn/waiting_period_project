@@ -22,8 +22,7 @@ export default {
   },
   computed: {
     isWhite() {
-      if (this.variation === 'white') return true
-      else return false
+      return this.variation === 'white'
     },
   },
 }
