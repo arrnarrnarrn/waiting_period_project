@@ -27,7 +27,7 @@ export default {
     },
     submitToSearch() {
       const searchURL = `/search?q=${this.queryString}`
-      this.$router.push(searchURL)
+      this.$router.push(searchURL, () => {})
     },
   },
 }

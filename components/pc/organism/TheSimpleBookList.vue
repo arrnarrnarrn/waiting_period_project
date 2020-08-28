@@ -5,7 +5,7 @@
     </p>
     <ul v-if="isResults" class="simpleBookList_list">
       <li
-        v-for="(item, index) in bookList"
+        v-for="(item, index) in bookList.items"
         :key="index"
         class="simpleBookList_item"
       >
@@ -17,6 +17,7 @@
 
 <script>
 import TheSimpleBookDetail from '@/components/pc/molecules/TheSimpleBookDetail.vue'
+
 export default {
   components: {
     TheSimpleBookDetail,

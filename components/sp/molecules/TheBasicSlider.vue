@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       altSrc: altImg,
-      sliderData: this.sliderItem,
+      //sliderData: this.sliderItem,
       swiperOptions: {
         loop: false,
         slidesPerView: 3.4,
@@ -66,14 +66,13 @@ export default {
   },
   computed: {
     sliderItems() {
-      return this.sliderData.items
+      return this.sliderItem?.items ?? {}
     },
     thumbnail() {
       return function (item) {
-        if (!item || !item.volumeInfo || !item.volumeInfo.imageLinks) {
-          return this.altSrc
-        }
-        return item.volumeInfo.imageLinks.thumbnail
+        return item?.volumeInfo?.imageLinks?.thumbnail
+          ? encodeURI(this.replacedAmp(item.volumeInfo.imageLinks.thumbnail))
+          : this.altSrc
       }
     },
   },

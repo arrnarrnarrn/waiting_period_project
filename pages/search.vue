@@ -27,9 +27,12 @@ export default {
   },
   watchQuery: true,
   async asyncData({ route, $axios, store, error }) {
+    console.log(store.state.api.pickup)
     if (!store.state.api.pickup.length) {
       await store.dispatch('api/pickup/fetchPickupItems')
     }
+    console.log(store.state.api.pickup)
+
     let search_results = {}
     let total_books = 0
     if (!route.query.q) {
@@ -48,7 +51,7 @@ export default {
       return { results: {}, total_books: 0 }
     }
     total_books = response.totalItems
-    search_results = Object.assign({}, response.items)
+    search_results = Object.assign({}, response)
     return { results: search_results, total_books: total_books }
   },
   data() {

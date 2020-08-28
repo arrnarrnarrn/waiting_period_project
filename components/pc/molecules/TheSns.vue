@@ -5,7 +5,7 @@
         <a :href="twitter" target="_blank" rel="noopener">
           <img
             class="sns_twitter-icon"
-            src="~assets/images/twitter.png"
+            src="~/assets/images/twitter.png"
             alt="twitterアイコン"
           />
         </a>
@@ -14,7 +14,7 @@
         <a :href="github" target="_blank" rel="noopener">
           <img
             class="sns_github-icon"
-            src="~assets/images/github.png"
+            src="~/assets/images/github.png"
             alt="githubアイコン"
           />
         </a>

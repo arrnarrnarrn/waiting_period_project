@@ -50,11 +50,6 @@ export default {
       default: () => {},
     },
   },
-  data() {
-    return {
-      queryString: '',
-    }
-  },
   computed: {
     bookData() {
       return this.book

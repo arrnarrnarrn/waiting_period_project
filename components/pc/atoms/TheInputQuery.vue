@@ -26,7 +26,7 @@ export default {
     },
     label: {
       type: String,
-      default: '',
+      default: 'label',
     },
   },
   computed: {
@@ -50,7 +50,7 @@ export default {
 .input {
   &_wrap {
     width: 280px;
-    margin-top: 24px;
+    margin-top: 16px;
     position: relative;
     &::after {
       content: '';

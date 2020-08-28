@@ -1,5 +1,11 @@
 <template>
-  <a class="btnLink" :class="{ white: isWhite }" :href="link" target="_blank">
+  <a
+    class="btnLink"
+    :class="{ white: isWhite }"
+    :href="link"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
     {{ linkText }}
   </a>
 </template>
@@ -22,8 +28,7 @@ export default {
   },
   computed: {
     isWhite() {
-      if (this.variation === 'white') return true
-      else return false
+      return this.variation === 'white'
     },
   },
 }

@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     bookLists() {
-      if (!this.bookData) return false
+      if (!this.bookData) return {}
       if (this.bookData.items) {
         let sliceMax = 0
         if (this.bookData.items.length > 5) {
@@ -46,10 +46,7 @@ export default {
     },
     thumbnail() {
       return function (item) {
-        if (!item.volumeInfo.imageLinks) {
-          return this.altSrc
-        }
-        return item.volumeInfo.imageLinks.thumbnail
+        return item?.volumeInfo?.imageLinks?.thumbnail ?? this.altSrc
       }
     },
   },

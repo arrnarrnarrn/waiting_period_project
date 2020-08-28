@@ -73,67 +73,35 @@ export default {
   },
   computed: {
     thumbnail() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.imageLinks) {
-        return this.altSrc
-      }
-      return this.book.volumeInfo.imageLinks.thumbnail
+      return this.book?.volumeInfo?.imageLinks?.thumbnail
+        ? this.replacedAmp(this.book.volumeInfo.imageLinks.thumbnail)
+        : this.altSrc
     },
     bookId() {
-      if (!this.book) return false
-      if (!this.book.id) {
-        return ''
-      }
-      return this.book.id
+      return this.book?.id ?? ''
     },
     title() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.title) {
-        return ''
-      }
-      return this.book.volumeInfo.title
+      return this.book?.volumeInfo?.title
+        ? this.truncate(this.book.volumeInfo.title, 32)
+        : ''
     },
     subTitle() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.subtitle) {
-        return ''
-      }
-      return this.book.volumeInfo.subtitle
+      return this.book?.volumeInfo?.subtitle ?? ''
     },
     authors() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.authors) {
-        return false
-      }
-      return this.book.volumeInfo.authors
+      return this.book?.volumeInfo?.authors ?? ''
     },
     publisher() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.publisher) {
-        return ''
-      }
-      return this.book.volumeInfo.publisher
+      return this.book?.volumeInfo?.publisher ?? ''
     },
     publishedDate() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.publishedDate) {
-        return ''
-      }
-      return this.book.volumeInfo.publishedDate
+      return this.book?.volumeInfo?.publishedDate ?? ''
     },
     mainCategory() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.mainCategory) {
-        return ''
-      }
-      return this.book.volumeInfo.mainCategory
+      return this.book?.volumeInfo?.mainCategory ?? ''
     },
     categories() {
-      if (!this.book) return false
-      if (!this.book.volumeInfo.categories) {
-        return false
-      }
-      return this.book.volumeInfo.categories
+      return this.book?.volumeInfo?.categories ?? ''
     },
   },
 }
