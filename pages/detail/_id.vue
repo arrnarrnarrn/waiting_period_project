@@ -28,11 +28,8 @@ export default {
     TheDetailSp,
   },
   async asyncData({ params, $axios, store, error }) {
-    if (!store.state.api.pickup.length) {
-      console.log('storeNotSet')
+    if (!Object.keys(store.state.api.pickup.pickupItems).length) {
       await store.dispatch('api/pickup/fetchPickupItems')
-    } else {
-      console.log(store.state.api.pickup)
     }
     let relatedBook = {}
     if (!params.bookDetail) {

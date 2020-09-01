@@ -5,7 +5,7 @@
         <a :href="twitter" target="_blank" rel="noopener">
           <img
             class="sns_twitter-icon"
-            src="~/assets/images/twitter.png"
+            :src="twitterImage"
             alt="twitterアイコン"
           />
         </a>
@@ -14,7 +14,7 @@
         <a :href="github" target="_blank" rel="noopener">
           <img
             class="sns_github-icon"
-            src="~/assets/images/github.png"
+            :src="gitHubImage"
             alt="githubアイコン"
           />
         </a>
@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import twitterIcon from '@/assets/images/twitter.png'
+import gitHubIcon from '@/assets/images/github.png'
 export default {
   props: {
     twitter: {
@@ -34,6 +36,12 @@ export default {
       type: String,
       default: 'https://github.com/arrnarrnarrn/waiting_period_project',
     },
+  },
+  data() {
+    return {
+      twitterImage: twitterIcon,
+      gitHubImage: gitHubIcon,
+    }
   },
 }
 </script>

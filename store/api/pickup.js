@@ -9,9 +9,7 @@ export const getters = {
 }
 
 export const mutations = {
-  setPickupItems(state, { pickupItems }) {
-    state.pickupItems = pickupItems
-  },
+  setPickupItems: (state, { pickupItems }) => (state.pickupItems = pickupItems),
 }
 
 export const actions = {
