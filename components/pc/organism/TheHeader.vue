@@ -1,9 +1,9 @@
 <template>
   <header class="header">
     <div class="header_wrap">
-      <a class="header_link" href="/">
+      <n-link class="header_link" to="/">
         <h1 class="header_logo">Nuxt Search Books</h1>
-      </a>
+      </n-link>
     </div>
   </header>
 </template>

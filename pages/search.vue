@@ -27,11 +27,9 @@ export default {
   },
   watchQuery: true,
   async asyncData({ route, $axios, store, error }) {
-    console.log(store.state.api.pickup)
-    if (!store.state.api.pickup.length) {
+    if (!Object.keys(store.state.api.pickup.pickupItems).length) {
       await store.dispatch('api/pickup/fetchPickupItems')
     }
-    console.log(store.state.api.pickup)
 
     let search_results = {}
     let total_books = 0

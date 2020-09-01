@@ -25,16 +25,21 @@ describe('store/api.pickup.js', () => {
     test('何もしていないときは空', () => {
       expect(store.getters['pickupItems']).toStrictEqual({})
     })
+    test('stateがセットされる', () => {
+      const state = { test: 'test' }
+    })
   })
   describe('actions', () => {
     let commit
+    let state
     beforeEach(() => {
       commit = store.commit
+      state = store.state
     })
     test('getPickupData', async (done) => {
       action = 'fetchPickupItems'
-      await testedAction({ commit })
-      expect(store.getters['pickupItems']).toStrictEqual({})
+      await testedAction({ commit, state })
+      expect(store.getters['pickupItems']).toStrictEqual({ sss: 'sss' })
       done()
     })
   })
